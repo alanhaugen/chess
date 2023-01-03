@@ -8,4 +8,4 @@ For Unix:
 
 For Windows:
 
-> mklink /D lib ~"\Huldra Dropbox"\Chess\data
+> mklink /D lib "..\Huldra Dropbox"\Chess\data

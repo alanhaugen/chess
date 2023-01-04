@@ -2,15 +2,6 @@
 
 Chess::Chess()
 {
-    king = new Actor();
-    king->Add(new Mesh("data/blender/king.blend"));
-
-    camera = new Camera();
-    fpsCamera = new FPSCamera(camera);
-
-    components.Add(king);
-    components.Add(camera);
-    components.Add(fpsCamera);
 }
 
 Chess::~Chess()
@@ -22,7 +13,15 @@ Chess::~Chess()
 
 void Chess::Init()
 {
+    king = new Actor();
+    king->Add(new Mesh("data/blender/king.blend"));
 
+    camera = new Camera();
+    fpsCamera = new FPSCamera(camera);
+
+    components.Add(king);
+    components.Add(camera);
+    components.Add(fpsCamera);
 }
 
 void Chess::Update()

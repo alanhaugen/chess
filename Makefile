@@ -16,19 +16,14 @@ LIBS = \
 #############################################################################
 
 SOURCES = \
+    source/chess.cpp \
     source/main.cpp
 
 #############################################################################
-# Assets (This will soon be automated)
+# Setup Asset Conditioning Pipeline
 #############################################################################
 
-TEXT_FILES = \
-    intermediate/project.json \
-    intermediate/simple.vert \
-    intermediate/simple.frag
-
-IMAGE_FILES = \
-    intermediate/logo_inv_jpg.jpg
+PROJECT_FILES = $(SOURCES) data/project.json
 
 #############################################################################
 # Setup build platform rules 

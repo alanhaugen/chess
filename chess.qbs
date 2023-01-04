@@ -5,8 +5,27 @@ solid {
         name: "Chess"
 
         files: [
+            "data/blender/bishop.blend",
+            "data/blender/bishop.blend1",
+            "data/blender/board.blend",
+            "data/blender/boardandpieces.blend",
+            "data/blender/boardandpieces.blend1",
+            "data/blender/king.blend",
+            "data/blender/king.blend1",
+            "data/blender/knight.blend",
+            "data/blender/knight.blend1",
+            "data/blender/pawn.blend",
+            "data/blender/pawn.blend1",
+            "data/blender/queen.blend",
+            "data/blender/queen.blend1",
+            "data/blender/rook.blend",
+            "data/blender/rook.blend1",
+            "data/blender/shogi.blend",
+            "data/blender/shogi.blend1",
             "data/level1.json",
             "data/project.json",
+            "source/chess.cpp",
+            "source/chess.h",
             "source/main.cpp",
         ]
 

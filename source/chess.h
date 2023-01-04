@@ -3,12 +3,17 @@
 
 #include <core/application.h>
 #include <core/components/mesh.h>
+#include <core/components/camera.h>
+#include <core/components/fpscamera.h>
 
 class Chess : public IScene
 {
 public:
     Chess();
+    ~Chess();
     Mesh king;
+    Camera *camera;
+    FPSCamera fpsCamera;
 
     void Init();
     void Update();

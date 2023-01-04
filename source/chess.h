@@ -11,9 +11,9 @@ class Chess : public IScene
 public:
     Chess();
     ~Chess();
-    Mesh king;
+    Actor *king;
     Camera *camera;
-    FPSCamera fpsCamera;
+    FPSCamera *fpsCamera;
 
     void Init();
     void Update();

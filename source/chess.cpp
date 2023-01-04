@@ -1,16 +1,23 @@
 #include "chess.h"
 
 Chess::Chess()
-    : fpsCamera(NULL)
 {
-    king = Mesh("data/blender/king.blend");
+    king = new Actor();
+    king->Add(new Mesh("data/blender/king.blend"));
+
     camera = new Camera();
-    fpsCamera = FPSCamera(camera);
+    fpsCamera = new FPSCamera(camera);
+
+    components.Add(king);
+    components.Add(camera);
+    components.Add(fpsCamera);
 }
 
 Chess::~Chess()
 {
+    delete fpsCamera;
     delete camera;
+    delete king;
 }
 
 void Chess::Init()

@@ -12,6 +12,9 @@ public:
     Chess();
     ~Chess();
     Actor *king;
+    Actor *queen;
+    Actor *pawn;
+    Actor *bishop;
     Camera *camera;
     FPSCamera *fpsCamera;
 

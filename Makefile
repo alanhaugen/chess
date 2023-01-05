@@ -16,8 +16,7 @@ LIBS = \
 #############################################################################
 
 SOURCES = \
-    source/chess.cpp \
-    source/main.cpp
+    $(wildcard source/*.cpp)
 
 #############################################################################
 # Setup Asset Conditioning Pipeline

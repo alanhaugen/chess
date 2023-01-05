@@ -9,6 +9,9 @@ Chess::~Chess()
     delete fpsCamera;
     delete camera;
     delete king;
+    delete pawn;
+    delete bishop;
+    delete queen;
 }
 
 void Chess::Init()

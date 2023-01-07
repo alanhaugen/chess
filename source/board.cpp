@@ -1,5 +1,4 @@
 #include "board.h"
-#include <core/application.h>
 
 Board::Board()
 {

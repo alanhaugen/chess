@@ -26,7 +26,7 @@ void Chess::Update()
 {
     for (unsigned int i = 0; i < board->components.Size(); i++)
     {
-
+        //Log(board->components[i]->tag);
     }
 }
 

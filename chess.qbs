@@ -5,6 +5,8 @@ solid {
         name: "Chess"
 
         files: [
+            "data/app.rc",
+            "data/app.res",
             "data/blender/bishop.blend",
             "data/blender/bishop.blend1",
             "data/blender/board.blend",
@@ -22,11 +24,29 @@ solid {
             "data/blender/rook.blend1",
             "data/blender/shogi.blend",
             "data/blender/shogi.blend1",
+            "data/icon.png",
+            "data/icon_1024x1024.png",
+            "data/icon_128x128.png",
+            "data/icon_16x16.png",
+            "data/icon_256x256.png",
+            "data/icon_32x32.png",
+            "data/icon_512x512.png",
+            "data/icon_64x64.png",
+            "data/icon_96x96.png",
             "data/level1.json",
+            "data/logo_inv_jpg.jpg",
             "data/project.json",
+            "data/simple.frag",
+            "data/simple.vert",
+            "data/solid.ico",
+            "data/vertexanimation.frag",
+            "data/vertexanimation.vert",
+            "source/board.cpp",
+            "source/board.h",
             "source/chess.cpp",
             "source/chess.h",
             "source/main.cpp",
+            "source/main.h",
         ]
 
         property stringList includePaths: "../solid/source"

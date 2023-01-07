@@ -8,28 +8,26 @@ Chess::~Chess()
 {
     delete fpsCamera;
     delete camera;
-    delete king;
-    delete pawn;
-    delete bishop;
-    delete queen;
+    delete board;
 }
 
 void Chess::Init()
 {
-    king = new Actor();
-    king->Add(new Mesh("data/blender/king.blend"));
-
-    camera = new Camera();
+    camera    = new Camera();
     fpsCamera = new FPSCamera(camera);
+    board     = new Board();
 
-    components.Add(king);
     components.Add(camera);
     components.Add(fpsCamera);
+    components.Add(board);
 }
 
 void Chess::Update()
 {
+    for (unsigned int i = 0; i < board->components.Size(); i++)
+    {
 
+    }
 }
 
 void Chess::UpdateLate()

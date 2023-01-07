@@ -2,21 +2,20 @@
 #define CHESS_H
 
 #include <core/application.h>
-#include <core/components/mesh.h>
 #include <core/components/camera.h>
 #include <core/components/fpscamera.h>
+#include "board.h"
 
 class Chess : public IScene
 {
+private:
+    Camera *camera;
+    FPSCamera *fpsCamera;
+    Board *board;
+
 public:
     Chess();
     ~Chess();
-    Actor *king;
-    Actor *queen;
-    Actor *pawn;
-    Actor *bishop;
-    Camera *camera;
-    FPSCamera *fpsCamera;
 
     void Init();
     void Update();

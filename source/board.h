@@ -10,6 +10,7 @@ public:
     Board();
     ~Board();
 
+    Actor *board;
     Actor *king;
     Actor *queen;
     Actor *pawn1;

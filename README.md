@@ -10,15 +10,24 @@ For Windows:
 
 > mklink /D data "..\Huldra Dropbox"\Chess\data
 
-If you use the qbs system, please add the following build step before qbs build
+## Instructions for use of the QtCreator (Download from qt.io) qbs build system
+
+Open chess.qbs with QtCreator
+
+Change the run working directory to the following:
+
+> %{sourceDir}/intermediate
+
+Add the following build step before qbs build
 
 For Unix:
 
 > make acp
 
-For Windows, please add /c/Program\ Files/Git/usr/bin to your PATH and use mingw make
+For Windows, please add /c/Program\ Files/Git/usr/bin to your PATH and use mingw make:
 
 > mingw32-make.exe acp
 
+For this build step, regardless of platform, change the build working directory to the following:
 
-
+> %{sourceDir}

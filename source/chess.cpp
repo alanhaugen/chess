@@ -6,9 +6,9 @@ Chess::Chess()
 
 Chess::~Chess()
 {
+    delete board;
     delete fpsCamera;
     delete camera;
-    delete board;
 }
 
 void Chess::Init()
@@ -24,9 +24,21 @@ void Chess::Init()
 
 void Chess::Update()
 {
-    for (unsigned int i = 0; i < board->components.Size(); i++)
+    if (input.Mouse.Released)
     {
-        //Log(board->components[i]->tag);
+        for (unsigned int i = 0; i < board->components.Size(); i++)
+        {
+            IComponent *piece = board->components[i];
+            //Log(piece->tag);
+
+            if (piece->tag.Empty() == false) // board itself has tag ""
+            {
+                if (piece->tag == "king")
+                {
+                    piece->matrix.Translate(glm::vec3(0.0, 0.0, 0.5));
+                }
+            }
+        }
     }
 }
 

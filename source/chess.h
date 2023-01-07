@@ -19,7 +19,7 @@ public:
 
     void Init();
     void Update();
-    void UpdateLate();
+    void UpdateLate(); // UpdatePhysics
 };
 
 #endif // CHESS_H

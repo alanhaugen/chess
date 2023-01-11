@@ -13,6 +13,9 @@ private:
     FPSCamera *fpsCamera;
     Board *board;
 
+    bool dragging;
+    Actor *activePiece;
+
 public:
     Chess();
     ~Chess();

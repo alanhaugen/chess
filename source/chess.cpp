@@ -58,8 +58,6 @@ void Chess::Update()
             {
                 IPhysics::Ray cameraRay = camera->ScreenPointToRay(input.Mouse.x, input.Mouse.y);
 
-                //IPhysics::Ray cameraRay = IPhysics::Ray(glm::vec3(0, 0, 0), glm::vec3(3 * 4, 0, -3));
-
                 if (physics->Intersect(cameraRay, piece->hitbox))
                 {
                     Log(piece->tag);

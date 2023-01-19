@@ -99,6 +99,103 @@ Board::Board()
     components.Add(rook1);
     components.Add(rook2);
     components.Add(queen);
+
+
+
+
+
+    pking = new Actor();
+    pking->Add(new Mesh("data/blender/king.blend"));
+    pking->matrix.Translate(glm::vec3(3 * 4, 0, 19));
+    pking->tag = "king";
+
+    pbishop1 = new Actor();
+    pbishop1->Add(new Mesh("data/blender/bishop.blend"));
+    pbishop1->matrix.Translate(glm::vec3(3 * 2, 0, 19));
+    pbishop1->tag = "bishop1";
+
+    pbishop2 = new Actor();
+    pbishop2->Add(new Mesh("data/blender/bishop.blend"));
+    pbishop2->matrix.Translate(glm::vec3(3 * 5, 0, 19));
+    pbishop2->tag = "bishop2";
+
+    pknight1 = new Actor();
+    pknight1->Add(new Mesh("data/blender/knight.blend"));
+    pknight1->matrix.Translate(glm::vec3(3 * 1, 0, 19));
+    pknight1->tag = "knight1";
+
+    pknight2 = new Actor();
+    pknight2->Add(new Mesh("data/blender/knight.blend"));
+    pknight2->matrix.Translate(glm::vec3(3 * 6, 0, 19));
+    pknight2->tag = "knight2";
+
+    prook1 = new Actor();
+    prook1->Add(new Mesh("data/blender/rook.blend"));
+    prook1->matrix.Translate(glm::vec3(3 * 0, 0, 19));
+    prook1->tag = "rook1";
+
+    prook2 = new Actor();
+    prook2->Add(new Mesh("data/blender/rook.blend"));
+    prook2->matrix.Translate(glm::vec3(3 * 7, 0, 19));
+    prook2->tag = "rook2";
+
+    ppawn1 = new Actor();
+    ppawn2 = new Actor();
+    ppawn3 = new Actor();
+    ppawn4 = new Actor();
+    ppawn5 = new Actor();
+    ppawn6 = new Actor();
+    ppawn7 = new Actor();
+    ppawn8 = new Actor();
+
+    ppawn1->Add(new Mesh("data/blender/pawn.blend"));
+    ppawn2->Add(new Mesh("data/blender/pawn.blend"));
+    ppawn3->Add(new Mesh("data/blender/pawn.blend"));
+    ppawn4->Add(new Mesh("data/blender/pawn.blend"));
+    ppawn5->Add(new Mesh("data/blender/pawn.blend"));
+    ppawn6->Add(new Mesh("data/blender/pawn.blend"));
+    ppawn7->Add(new Mesh("data/blender/pawn.blend"));
+    ppawn8->Add(new Mesh("data/blender/pawn.blend"));
+
+    ppawn1->matrix.Translate(glm::vec3(3 * 0, 0, 15));
+    ppawn2->matrix.Translate(glm::vec3(3 * 1, 0, 15));
+    ppawn3->matrix.Translate(glm::vec3(3 * 2, 0, 15));
+    ppawn4->matrix.Translate(glm::vec3(3 * 3, 0, 15));
+    ppawn5->matrix.Translate(glm::vec3(3 * 4, 0, 15));
+    ppawn6->matrix.Translate(glm::vec3(3 * 5, 0, 15));
+    ppawn7->matrix.Translate(glm::vec3(3 * 6, 0, 15));
+    ppawn8->matrix.Translate(glm::vec3(3 * 7, 0, 15));
+
+    ppawn1->tag = "pawn1";
+    ppawn2->tag = "pawn2";
+    ppawn3->tag = "pawn3";
+    ppawn4->tag = "pawn4";
+    ppawn5->tag = "pawn5";
+    ppawn6->tag = "pawn6";
+    ppawn7->tag = "pawn7";
+    ppawn8->tag = "pawn8";
+
+    pqueen = new Actor();
+    pqueen->Add(new Mesh("data/blender/queen.blend"));
+    pqueen->matrix.Translate(glm::vec3(3 * 3, 0, 19));
+    pqueen->tag = "queen";
+
+    components.Add(pking);
+    components.Add(ppawn1);
+    components.Add(ppawn2);
+    components.Add(ppawn3);
+    components.Add(ppawn4);
+    components.Add(ppawn5);
+    components.Add(ppawn6);
+    components.Add(ppawn7);
+    components.Add(ppawn8);
+    components.Add(pbishop1);
+    components.Add(pbishop2);
+    components.Add(pknight1);
+    components.Add(pknight2);
+    components.Add(prook1);
+    components.Add(prook2);
+    components.Add(pqueen);
 }
 
 Board::~Board()

@@ -49,6 +49,16 @@ solid {
             "source/main.h",
         ]
 
+        Depends { name: "core"  }
+        Depends { name: "nullrenderer"  }
+        Depends { name: "nullphysics"  }
+        Depends { name: "nullaudio"  }
+        Depends { name: "nullphysics"  }
+        Depends { name: "nullfilesystem"  }
+        Depends { name: "gles2renderer"  }
+        Depends { name: "stdfilesystem"  }
+        Depends { name: "portaudioaudio"  }
+
         property stringList includePaths: "../solid/source"
 
         Properties {

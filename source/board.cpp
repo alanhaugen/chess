@@ -2,24 +2,32 @@
 
 Board::Board()
 {
+    Mesh *mesh = new Mesh("data/blender/board.blend");
     board = new Actor();
-    board->Add(new Mesh("data/blender/board.blend"));
+    board->Add(mesh);
     board->matrix.Translate(glm::vec3(.5, 0, -3));
+    mesh->SetColorTint(glm::vec4(0.0, 1.0, 0.0, 1.0));
 
+    mesh = new Mesh("data/blender/king.blend");
     king = new Actor();
-    king->Add(new Mesh("data/blender/king.blend"));
     king->matrix.Translate(glm::vec3(3 * 4, 0, -3));
+    king->Add(mesh);
     king->tag = "king";
+    mesh->SetColorTint(glm::vec4(king->matrix.position.x, 1.0, 0.0, 1.0));
 
+    mesh = new Mesh("data/blender/bishop.blend");
     bishop1 = new Actor();
-    bishop1->Add(new Mesh("data/blender/bishop.blend"));
     bishop1->matrix.Translate(glm::vec3(3 * 2, 0, -3));
+    bishop1->Add(mesh);
     bishop1->tag = "bishop1";
+    mesh->SetColorTint(glm::vec4(bishop1->matrix.position.x / 10, 1.0, 0.0, 1.0));
 
+    mesh = new Mesh("data/blender/bishop.blend");
     bishop2 = new Actor();
-    bishop2->Add(new Mesh("data/blender/bishop.blend"));
+    bishop2->Add(mesh);
     bishop2->matrix.Translate(glm::vec3(3 * 5, 0, -3));
     bishop2->tag = "bishop2";
+    mesh->SetColorTint(glm::vec4(bishop2->matrix.position.x / 10, 1.0, 0.0, 1.0));
 
     knight1 = new Actor();
     knight1->Add(new Mesh("data/blender/knight.blend"));

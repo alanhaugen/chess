@@ -14,7 +14,14 @@ Board::Board()
 
     bishop1 = new Actor();
     bishop1->matrix.Translate(glm::vec3(3 * 2, 0, -3));
-    bishop1->Add(new Mesh("data/blender/bishop.blend"));
+    bishop1->Add(new Mesh("data/blender/bishop.blend", "data/phong.vert", "data/phong.frag"));
+    glm::mat4 *mat = new glm::mat4();
+    bishop1->Uniform("u_modelMat", static_cast<glm::mat4&>(mat[0]));
+    bishop1->Uniform("u_viewMat", static_cast<glm::mat4&>(mat[0]));
+    bishop1->Uniform("u_projMat", static_cast<glm::mat4&>(mat[0]));
+    bishop1->Uniform("u_normalMat", static_cast<glm::mat4&>(mat[0]));
+    bishop1->Uniform("u_lightPosition", glm::vec3());
+    bishop1->Uniform("u_cameraPosition", glm::vec3());
     bishop1->tag = "bishop1";
 
     bishop2 = new Actor();

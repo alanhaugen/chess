@@ -10,7 +10,7 @@ Board::Board()
     king->matrix.Translate(glm::vec3(3 * 4, 0, -3));
     king->Add(new Mesh("data/blender/king.blend"));
     king->tag = "king";
-    king->Uniform("colorTint", glm::vec4(1.0f, 1.0f, 0.0f, 1.0f));
+    king->Uniform("colorTint", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
 
     bishop1 = new Actor();
     bishop1->matrix.Translate(glm::vec3(3 * 2, 0, -3));

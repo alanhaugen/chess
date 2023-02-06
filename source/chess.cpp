@@ -35,7 +35,7 @@ void Chess::Update()
         input.Mouse.Dragging = false;
         if (activePiece)
         {
-            activePiece->Uniform("colorTint", glm::vec4(0.0f, 1.0f, 1.0f, 1.0f));
+            activePiece->Uniform("colour", glm::vec4(0.0f, 1.0f, 1.0f, 1.0f));
         }
         //input.Mouse.Hidden = false;
     }
@@ -66,7 +66,7 @@ void Chess::Update()
                 {
                     Log(piece->tag);
                     activePiece = piece;
-                    activePiece->Uniform("colorTint", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
+                    activePiece->Uniform("colour", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
                     dragging = true;
                     break;
                 }

@@ -35,6 +35,8 @@ solid {
             "data/icon_96x96.png",
             "data/level1.json",
             "data/logo_inv_jpg.jpg",
+            "data/phong.frag",
+            "data/phong.vert",
             "data/project.json",
             "data/simple.frag",
             "data/simple.vert",

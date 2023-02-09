@@ -1,5 +1,9 @@
 #include "chess.h"
 
+#ifdef TILTFIVE
+#include "tilt5/TiltFiveNative.h"
+#endif
+
 Chess::Chess()
 {
 }
@@ -29,6 +33,31 @@ void Chess::Init()
 
 void Chess::Update()
 {
+#ifdef TILTFIVE
+    if (input.Head.active)
+    {
+        camera->position = glm::vec3(-9.683014 + (input.Head.x * 10), 16.498363 + (input.Head.y * 10), 7.318779 + (input.Head.z * 10));
+
+        camera->yaw = input.Head.yaw;
+        camera->pitch = input.Head.pitch;
+        camera->roll = input.Head.roll;
+
+        //fpsCamera->UpdateCamera();
+    }
+    else
+    {
+        camera->position = glm::vec3(-9.683014, 16.498363, 7.318779);
+        camera->yaw = 2;
+        camera->pitch = -41;
+        camera->roll = 0;
+
+        fpsCamera->UpdateCamera();
+    }
+
+    printf("Glasses position: '%f %f %f\n", input.Head.x, input.Head.y, input.Head.z);
+    printf("camera position: '%f %f %f\n", camera->position.x, camera->position.y, camera->position.z);
+#endif
+
     if (input.Mouse.Released)
     {
         dragging = false;

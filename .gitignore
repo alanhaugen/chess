@@ -55,7 +55,14 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
+# MSVC
+
+*.EXE
+*.ilk
+*.pdb
+
 # =========================
 # Mac generated
 # =========================
 .DS_Store
+

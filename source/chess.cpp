@@ -29,6 +29,8 @@ void Chess::Init()
 
     dragging = false;
     activePiece = NULL;
+
+    rotation = 0.0f;
 }
 
 void Chess::Update()
@@ -36,13 +38,22 @@ void Chess::Update()
 #ifdef TILTFIVE
     if (input.Head.active)
     {
-        camera->position = glm::vec3(-9.683014 + (input.Head.x * 10), 16.498363 + (input.Head.y * 10), 7.318779 + (input.Head.z * 10));
+        //camera->position = glm::vec3(-9.683014 + (input.Head.x * 10), 16.498363 + (input.Head.y * 10), 7.318779 + (input.Head.z * 10));
 
-        camera->yaw = input.Head.yaw;
-        camera->pitch = input.Head.pitch;
-        camera->roll = input.Head.roll;
+        rotation += 0.5f;
+
+        //camera->pitch = -41.0f + (input.Head.pitch * 5);
+        //camera->yaw = rotation;//input.Head.yaw;
+        //camera->roll = rotation;//input.Head.roll;
 
         //fpsCamera->UpdateCamera();
+        //camera->forward.x = 2.0f + input.Head.pitch;//cos(glm::radians(camera->yaw)) * cos(glm::radians(camera->pitch));
+        //camera->forward.y = -41.0f + input.Head.yaw; //sin(glm::radians(camera->pitch));
+        camera->forward.x = input.Head.roll; //sin(glm::radians(camera->yaw)) * cos(glm::radians(camera->pitch));
+        camera->forward = glm::normalize(camera->forward);
+
+        camera->right = glm::normalize(glm::cross(camera->forward, camera->worldUp));
+        camera->up = glm::normalize(glm::cross(camera->right, camera->forward));
     }
     else
     {

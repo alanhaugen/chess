@@ -19,12 +19,14 @@ void Chess::Init()
 {
     camera    = new Camera(glm::vec3(-9.683014, 16.498363, 7.318779), glm::vec3(0.0, 1.0, 0.0), 2, -41, 0);
     fpsCamera = new FPSCamera(camera);
+    fps       = new FPSCounter();
     board     = new Board();
 
     fpsCamera->UpdateCamera();
 
     components.Add(camera);
     //components.Add(fpsCamera);
+    components.Add(fps);
     components.Add(board);
 
     dragging = false;

@@ -22,6 +22,8 @@ void Chess::Init()
     fps       = new FPSCounter();
     board     = new Board();
 
+    bg     = new Background();
+
     fpsCamera->UpdateCamera();
 
     components.Add(camera);

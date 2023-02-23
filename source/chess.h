@@ -5,6 +5,7 @@
 #include <core/components/camera.h>
 #include <core/components/fpscamera.h>
 #include <core/components/fpscounter.h>
+#include <core/components/background.h>
 #include "board.h"
 
 class Chess : public IScene
@@ -14,6 +15,7 @@ private:
     FPSCamera *fpsCamera;
     FPSCounter *fps;
     Board *board;
+    Background *bg;
 
     bool dragging;
     Actor *activePiece;

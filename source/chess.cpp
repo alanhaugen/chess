@@ -16,7 +16,14 @@ void Chess::Init()
     camera    = new Camera(glm::vec3(-9.683014, 16.498363, 7.318779), glm::vec3(0.0, 1.0, 0.0), 2, -41, 0);
     fpsCamera = new FPSCamera(camera);
     fps       = new FPSCounter();
-    bg        = new Background(camera);
+    bg        = new Background(
+                "data/cubemap_yoko/negz.jpg",
+                "data/cubemap_yoko/posz.jpg",
+                "data/cubemap_yoko/posy.jpg",
+                "data/cubemap_yoko/negy.jpg",
+                "data/cubemap_yoko/negx.jpg",
+                "data/cubemap_yoko/posx.jpg",
+                camera);
 
     board     = new Board();
 

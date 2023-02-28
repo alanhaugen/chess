@@ -1,5 +1,14 @@
 # Chess
 
+A simple chess game implemented with solid
+
+## Attribution
+
+Cubemaps are used from Emil Persson, aka Humus.
+http://www.humus.name
+
+# Instructions
+
 Symbolically link the following directories from Huldra Dropbox
 
 For Unix:

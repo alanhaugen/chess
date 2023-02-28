@@ -1,9 +1,5 @@
 #include "chess.h"
 
-#ifdef TILTFIVE
-#include "tilt5/TiltFiveNative.h"
-#endif
-
 Chess::Chess()
 {
 }
@@ -20,15 +16,16 @@ void Chess::Init()
     camera    = new Camera(glm::vec3(-9.683014, 16.498363, 7.318779), glm::vec3(0.0, 1.0, 0.0), 2, -41, 0);
     fpsCamera = new FPSCamera(camera);
     fps       = new FPSCounter();
-    board     = new Board();
+    bg        = new Background(camera);
 
-    bg     = new Background();
+    board     = new Board();
 
     fpsCamera->UpdateCamera();
 
     components.Add(camera);
     //components.Add(fpsCamera);
     components.Add(fps);
+    components.Add(bg);
     components.Add(board);
 
     dragging = false;

@@ -5,6 +5,8 @@ solid {
         name: "Chess"
 
         files: [
+            "../../Huldra Dropbox/Chess/data/cubemap.frag",
+            "../../Huldra Dropbox/Chess/data/cubemap.vert",
             "data/app.rc",
             "data/app.res",
             "data/blender/bishop.blend",

@@ -9,6 +9,8 @@ Chess::~Chess()
     delete board;
     delete fpsCamera;
     delete camera;
+    delete bg;
+    delete light;
 }
 
 void Chess::Init()
@@ -25,15 +27,17 @@ void Chess::Init()
                 "data/cubemap_yoko/posx.jpg",
                 camera);
 
+    light     = new PointLight();
     board     = new Board();
 
     fpsCamera->UpdateCamera();
 
     components.Add(camera);
-    //components.Add(fpsCamera);
+    components.Add(fpsCamera);
     components.Add(fps);
     components.Add(bg);
     components.Add(board);
+    components.Add(light);
 
     dragging = false;
     activePiece = NULL;
@@ -106,6 +110,12 @@ void Chess::Update()
             Actor *piece = dynamic_cast<Actor*>(board->components[i]);
             //Log(piece->tag);
 
+            if (piece->tag == "bishop1")
+            {
+                piece->Uniform("u_lightPosition", static_cast<glm::vec3>(camera->position));//(light->position));
+                piece->Uniform("u_cameraPosition", static_cast<glm::vec3>(camera->position));
+            }
+
             if (piece->tag.Empty() == false) // board itself has tag ""
             {
                 IPhysics::Ray cameraRay = camera->ScreenPointToRay(input.Mouse.x, input.Mouse.y);
@@ -123,7 +133,7 @@ void Chess::Update()
     }
 }
 
-void Chess::UpdateLate()
+void Chess::UpdateAfterPhysics()
 {
 
 }

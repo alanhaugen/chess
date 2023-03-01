@@ -6,6 +6,7 @@
 #include <core/components/fpscamera.h>
 #include <core/components/fpscounter.h>
 #include <core/components/background.h>
+#include <core/components/pointlight.h>
 #include "board.h"
 
 class Chess : public IScene
@@ -16,6 +17,8 @@ private:
     FPSCounter *fps;
     Board *board;
     Background *bg;
+    PointLight *light;
+
 
     bool dragging;
     Actor *activePiece;
@@ -28,7 +31,7 @@ public:
 
     void Init();
     void Update();
-    void UpdateLate(); // UpdatePhysics
+    void UpdateAfterPhysics(); // UpdatePhysics
 };
 
 #endif // CHESS_H

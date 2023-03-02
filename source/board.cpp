@@ -8,44 +8,59 @@ Board::Board()
 
     king = new Actor();
     king->matrix.Translate(glm::vec3(3 * 4, 0, -3));
-    king->Add(new Mesh("data/blender/king.blend"));
+    king->Add(new Mesh("data/blender/king.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
     king->tag = "king";
-    king->Uniform("colour", glm::vec4(0.0f, 1.0f, 0.0f, 1.0f));
+    king->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     bishop1 = new Actor();
     bishop1->matrix.Translate(glm::vec3(3 * 2, 0, -3));
     bishop1->Add(new Mesh("data/blender/bishop.blend",
                           "data/phong.vert",
                           "data/phong.frag"));
-    glm::mat4 *mat = new glm::mat4(1.0f);
-    bishop1->Uniform("u_modelMat", static_cast<glm::mat4&>(mat[0]));
-    bishop1->Uniform("u_normalMat", static_cast<glm::mat4&>(mat[0]));
     bishop1->tag = "bishop1";
+    bishop1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     bishop2 = new Actor();
-    bishop2->Add(new Mesh("data/blender/bishop.blend"));
+    bishop2->Add(new Mesh("data/blender/bishop.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
     bishop2->matrix.Translate(glm::vec3(3 * 5, 0, -3));
     bishop2->tag = "bishop2";
+    bishop2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     knight1 = new Actor();
-    knight1->Add(new Mesh("data/blender/knight.blend"));
+    knight1->Add(new Mesh("data/blender/knight.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
     knight1->matrix.Translate(glm::vec3(3 * 1, 0, -3));
     knight1->tag = "knight1";
+    knight1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     knight2 = new Actor();
-    knight2->Add(new Mesh("data/blender/knight.blend"));
+    knight2->Add(new Mesh("data/blender/knight.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
     knight2->matrix.Translate(glm::vec3(3 * 6, 0, -3));
     knight2->tag = "knight2";
+    knight2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     rook1 = new Actor();
-    rook1->Add(new Mesh("data/blender/rook.blend"));
+    rook1->Add(new Mesh("data/blender/rook.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
     rook1->matrix.Translate(glm::vec3(3 * 0, 0, -3));
     rook1->tag = "rook1";
+    rook1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     rook2 = new Actor();
-    rook2->Add(new Mesh("data/blender/rook.blend"));
+    rook2->Add(new Mesh("data/blender/rook.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
     rook2->matrix.Translate(glm::vec3(3 * 7, 0, -3));
     rook2->tag = "rook2";
+    rook2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     pawn1 = new Actor();
     pawn2 = new Actor();
@@ -56,14 +71,38 @@ Board::Board()
     pawn7 = new Actor();
     pawn8 = new Actor();
 
-    pawn1->Add(new Mesh("data/blender/pawn.blend"));
-    pawn2->Add(new Mesh("data/blender/pawn.blend"));
-    pawn3->Add(new Mesh("data/blender/pawn.blend"));
-    pawn4->Add(new Mesh("data/blender/pawn.blend"));
-    pawn5->Add(new Mesh("data/blender/pawn.blend"));
-    pawn6->Add(new Mesh("data/blender/pawn.blend"));
-    pawn7->Add(new Mesh("data/blender/pawn.blend"));
-    pawn8->Add(new Mesh("data/blender/pawn.blend"));
+    pawn1->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pawn1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
+    pawn2->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pawn2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
+    pawn3->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pawn3->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
+    pawn4->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pawn4->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
+    pawn5->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pawn5->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
+    pawn6->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pawn6->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
+    pawn7->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pawn7->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
+    pawn8->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pawn8->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     pawn1->matrix.Translate(glm::vec3(3 * 0, 0, 0));
     pawn2->matrix.Translate(glm::vec3(3 * 1, 0, 0));
@@ -84,9 +123,12 @@ Board::Board()
     pawn8->tag = "pawn8";
 
     queen = new Actor();
-    queen->Add(new Mesh("data/blender/queen.blend"));
+    queen->Add(new Mesh("data/blender/queen.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
     queen->matrix.Translate(glm::vec3(3 * 3, 0, -3));
     queen->tag = "queen";
+    queen->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     components.Add(board);
     components.Add(king);
@@ -111,37 +153,58 @@ Board::Board()
 
 
     pking = new Actor();
-    pking->Add(new Mesh("data/blender/king.blend"));
+    pking->Add(new Mesh("data/blender/king.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
     pking->matrix.Translate(glm::vec3(3 * 4, 0, 19));
+    pking->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pking->tag = "king";
 
     pbishop1 = new Actor();
-    pbishop1->Add(new Mesh("data/blender/bishop.blend"));
+    pbishop1->Add(new Mesh("data/blender/bishop.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pbishop1->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pbishop1->matrix.Translate(glm::vec3(3 * 2, 0, 19));
     pbishop1->tag = "bishop1";
 
     pbishop2 = new Actor();
-    pbishop2->Add(new Mesh("data/blender/bishop.blend"));
+    pbishop2->Add(new Mesh("data/blender/bishop.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pbishop2->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pbishop2->matrix.Translate(glm::vec3(3 * 5, 0, 19));
     pbishop2->tag = "bishop2";
 
     pknight1 = new Actor();
-    pknight1->Add(new Mesh("data/blender/knight.blend"));
+    pknight1->Add(new Mesh("data/blender/knight.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pknight1->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pknight1->matrix.Translate(glm::vec3(3 * 1, 0, 19));
     pknight1->tag = "knight1";
 
     pknight2 = new Actor();
-    pknight2->Add(new Mesh("data/blender/knight.blend"));
+    pknight2->Add(new Mesh("data/blender/knight.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pknight2->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pknight2->matrix.Translate(glm::vec3(3 * 6, 0, 19));
     pknight2->tag = "knight2";
 
     prook1 = new Actor();
-    prook1->Add(new Mesh("data/blender/rook.blend"));
+    prook1->Add(new Mesh("data/blender/rook.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    prook1->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     prook1->matrix.Translate(glm::vec3(3 * 0, 0, 19));
     prook1->tag = "rook1";
 
     prook2 = new Actor();
-    prook2->Add(new Mesh("data/blender/rook.blend"));
+    prook2->Add(new Mesh("data/blender/rook.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    prook2->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     prook2->matrix.Translate(glm::vec3(3 * 7, 0, 19));
     prook2->tag = "rook2";
 
@@ -154,14 +217,38 @@ Board::Board()
     ppawn7 = new Actor();
     ppawn8 = new Actor();
 
-    ppawn1->Add(new Mesh("data/blender/pawn.blend"));
-    ppawn2->Add(new Mesh("data/blender/pawn.blend"));
-    ppawn3->Add(new Mesh("data/blender/pawn.blend"));
-    ppawn4->Add(new Mesh("data/blender/pawn.blend"));
-    ppawn5->Add(new Mesh("data/blender/pawn.blend"));
-    ppawn6->Add(new Mesh("data/blender/pawn.blend"));
-    ppawn7->Add(new Mesh("data/blender/pawn.blend"));
-    ppawn8->Add(new Mesh("data/blender/pawn.blend"));
+    ppawn1->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    ppawn1->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
+    ppawn2->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    ppawn2->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
+    ppawn3->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    ppawn3->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
+    ppawn4->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    ppawn4->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
+    ppawn5->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    ppawn5->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
+    ppawn6->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    ppawn6->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
+    ppawn7->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    ppawn7->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
+    ppawn8->Add(new Mesh("data/blender/pawn.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    ppawn8->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
 
     ppawn1->matrix.Translate(glm::vec3(3 * 0, 0, 15));
     ppawn2->matrix.Translate(glm::vec3(3 * 1, 0, 15));
@@ -182,7 +269,10 @@ Board::Board()
     ppawn8->tag = "pawn8";
 
     pqueen = new Actor();
-    pqueen->Add(new Mesh("data/blender/queen.blend"));
+    pqueen->Add(new Mesh("data/blender/queen.blend",
+                          "data/phong.vert",
+                          "data/phong.frag"));
+    pqueen->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pqueen->matrix.Translate(glm::vec3(3 * 3, 0, 19));
     pqueen->tag = "queen";
 

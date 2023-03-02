@@ -103,18 +103,22 @@ void Chess::Update()
         }
     }
 
+    for (unsigned int i = 0; i < board->components.Size(); i++)
+    {
+        Actor *piece = dynamic_cast<Actor*>(board->components[i]);
+        if (piece->tag.Empty() == false) // board itself has tag ""
+        {
+            piece->Uniform("u_lightPosition", static_cast<glm::vec3>(camera->position));//(light->position));
+            piece->Uniform("u_cameraPosition", static_cast<glm::vec3>(camera->position));
+        }
+    }
+
     if (input.Mouse.Pressed)
     {
         for (unsigned int i = 0; i < board->components.Size(); i++)
         {
             Actor *piece = dynamic_cast<Actor*>(board->components[i]);
             //Log(piece->tag);
-
-            if (piece->tag == "bishop1")
-            {
-                piece->Uniform("u_lightPosition", static_cast<glm::vec3>(camera->position));//(light->position));
-                piece->Uniform("u_cameraPosition", static_cast<glm::vec3>(camera->position));
-            }
 
             if (piece->tag.Empty() == false) // board itself has tag ""
             {

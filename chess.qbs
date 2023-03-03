@@ -7,6 +7,8 @@ solid {
         files: [
             "../../Huldra Dropbox/Chess/data/cubemap.frag",
             "../../Huldra Dropbox/Chess/data/cubemap.vert",
+            "../../Huldra Dropbox/Chess/data/gouraud.frag",
+            "../../Huldra Dropbox/Chess/data/gouraud.vert",
             "data/app.rc",
             "data/app.res",
             "data/blender/bishop.blend",

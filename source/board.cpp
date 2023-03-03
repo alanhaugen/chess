@@ -3,7 +3,9 @@
 Board::Board()
 {
     board = new Actor();
-    board->Add(new Mesh("data/blender/board.blend"));
+    board->Add(new Mesh("data/blender/board.blend",
+                          "data/simple.vert",
+                          "data/simple.frag"));
     board->matrix.Translate(glm::vec3(.5, 0, -3));
 
     king = new Actor();
@@ -124,8 +126,8 @@ Board::Board()
 
     queen = new Actor();
     queen->Add(new Mesh("data/blender/queen.blend",
-                          "data/phong.vert",
-                          "data/phong.frag"));
+                        "data/phong.vert",
+                        "data/phong.frag"));
     queen->matrix.Translate(glm::vec3(3 * 3, 0, -3));
     queen->tag = "queen";
     queen->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
@@ -154,16 +156,16 @@ Board::Board()
 
     pking = new Actor();
     pking->Add(new Mesh("data/blender/king.blend",
-                          "data/phong.vert",
-                          "data/phong.frag"));
+                        "data/phong.vert",
+                        "data/phong.frag"));
     pking->matrix.Translate(glm::vec3(3 * 4, 0, 19));
     pking->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pking->tag = "king";
 
     pbishop1 = new Actor();
     pbishop1->Add(new Mesh("data/blender/bishop.blend",
-                          "data/phong.vert",
-                          "data/phong.frag"));
+                           "data/phong.vert",
+                           "data/phong.frag"));
     pbishop1->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pbishop1->matrix.Translate(glm::vec3(3 * 2, 0, 19));
     pbishop1->tag = "bishop1";
@@ -194,16 +196,16 @@ Board::Board()
 
     prook1 = new Actor();
     prook1->Add(new Mesh("data/blender/rook.blend",
-                          "data/phong.vert",
-                          "data/phong.frag"));
+                         "data/phong.vert",
+                         "data/phong.frag"));
     prook1->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     prook1->matrix.Translate(glm::vec3(3 * 0, 0, 19));
     prook1->tag = "rook1";
 
     prook2 = new Actor();
     prook2->Add(new Mesh("data/blender/rook.blend",
-                          "data/phong.vert",
-                          "data/phong.frag"));
+                         "data/phong.vert",
+                         "data/phong.frag"));
     prook2->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     prook2->matrix.Translate(glm::vec3(3 * 7, 0, 19));
     prook2->tag = "rook2";

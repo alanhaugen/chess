@@ -108,7 +108,7 @@ void Chess::Update()
         Actor *piece = dynamic_cast<Actor*>(board->components[i]);
         if (piece->tag.Empty() == false) // board itself has tag ""
         {
-            piece->Uniform("u_lightPosition", static_cast<glm::vec3>(camera->position));//(light->position));
+            piece->Uniform("u_lightPosition", static_cast<glm::vec3>(light->position));
             piece->Uniform("u_cameraPosition", static_cast<glm::vec3>(camera->position));
         }
     }

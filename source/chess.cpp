@@ -27,7 +27,7 @@ void Chess::Init()
                 "data/cubemap_yoko/posx.jpg",
                 camera);
 
-    light     = new PointLight();
+    light     = new PointLight(glm::vec3(-9.683014, 16.498363, 7.318779));
     board     = new Board();
 
     fpsCamera->UpdateCamera();
@@ -41,8 +41,6 @@ void Chess::Init()
 
     dragging = false;
     activePiece = NULL;
-
-    rotation = 0.0f;
 }
 
 void Chess::Update()
@@ -52,16 +50,14 @@ void Chess::Update()
     {
         //camera->position = glm::vec3(-9.683014 + (input.Head.x * 10), 16.498363 + (input.Head.y * 10), 7.318779 + (input.Head.z * 10));
 
-        rotation += 0.5f;
-
-        //camera->pitch = -41.0f + (input.Head.pitch * 5);
-        //camera->yaw = rotation;//input.Head.yaw;
-        //camera->roll = rotation;//input.Head.roll;
+        camera->roll  = 0 + input.Head.roll;
+        camera->pitch = -41 + input.Head.pitch;
+        camera->yaw   = 2 + input.Head.yaw;
 
         //fpsCamera->UpdateCamera();
-        //camera->forward.x = 2.0f + input.Head.pitch;//cos(glm::radians(camera->yaw)) * cos(glm::radians(camera->pitch));
-        //camera->forward.y = -41.0f + input.Head.yaw; //sin(glm::radians(camera->pitch));
-        camera->forward.x = input.Head.roll; //sin(glm::radians(camera->yaw)) * cos(glm::radians(camera->pitch));
+        camera->forward.x = camera->roll;
+        camera->forward.y = camera->yaw;
+        camera->forward.z = camera->pitch;
         camera->forward = glm::normalize(camera->forward);
 
         camera->right = glm::normalize(glm::cross(camera->forward, camera->worldUp));

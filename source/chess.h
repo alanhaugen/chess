@@ -23,8 +23,6 @@ private:
     bool dragging;
     Actor *activePiece;
 
-    float rotation;
-
 public:
     Chess();
     ~Chess();

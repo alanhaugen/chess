@@ -48,20 +48,21 @@ void Chess::Update()
 #ifdef TILTFIVE
     if (input.Head.active)
     {
-        //camera->position = glm::vec3(-9.683014 + (input.Head.x * 10), 16.498363 + (input.Head.y * 10), 7.318779 + (input.Head.z * 10));
+        camera->position = glm::vec3(input.Head.x, input.Head.y, input.Head.z); // Notice tilt5 uses +Z as a up direction while we use Y
+        camera->position *= -10;
 
-        camera->roll  = 0 + input.Head.roll;
-        camera->pitch = -41 + input.Head.pitch;
-        camera->yaw   = 2 + input.Head.yaw;
+        camera->roll  = input.Head.roll;
+        camera->pitch = input.Head.pitch;
+        camera->yaw   = input.Head.yaw;
 
-        //fpsCamera->UpdateCamera();
-        camera->forward.x = camera->roll;
+        fpsCamera->UpdateCamera();
+        /*camera->forward.x = camera->roll;
         camera->forward.y = camera->yaw;
         camera->forward.z = camera->pitch;
         camera->forward = glm::normalize(camera->forward);
 
         camera->right = glm::normalize(glm::cross(camera->forward, camera->worldUp));
-        camera->up = glm::normalize(glm::cross(camera->right, camera->forward));
+        camera->up = glm::normalize(glm::cross(camera->right, camera->forward));*/
     }
     else
     {

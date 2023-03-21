@@ -42,6 +42,8 @@ void Chess::Init()
     dragging = false;
     activePiece = NULL;
     timer = Application::GetTime();
+
+    gameOver = false;
 }
 
 void Chess::Move(ChessMove move)

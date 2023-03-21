@@ -10,6 +10,8 @@ public:
     Board();
     ~Board();
 
+    void Position(String fen);
+
     Actor *board;
     Actor *king;
     Actor *queen;

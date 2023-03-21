@@ -7,6 +7,7 @@
 #include <core/components/fpscounter.h>
 #include <core/components/background.h>
 #include <core/components/pointlight.h>
+#include "chessmove.h"
 #include "board.h"
 
 class Chess : public IScene
@@ -22,6 +23,14 @@ private:
 
     bool dragging;
     Actor *activePiece;
+    ITime *timer;
+
+    bool gameOver;
+
+    void Move(ChessMove);
+    void MakeRandomMove();
+    Array<ChessMove> GetMoves();
+    String FEN();
 
 public:
     Chess();

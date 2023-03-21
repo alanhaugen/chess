@@ -316,3 +316,8 @@ Board::~Board()
     delete rook2;
     delete queen;
 }
+
+void Board::Position(String fen)
+{
+
+}

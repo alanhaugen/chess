@@ -41,7 +41,46 @@ void Chess::Init()
 
     dragging = false;
     activePiece = NULL;
+    timer = Application::GetTime();
 }
+
+void Chess::Move(ChessMove move)
+{
+}
+
+Array<ChessMove> Chess::GetMoves()
+{
+    Array<ChessMove> moves;
+    moves.Add(ChessMove("a1", "a2", "pawn"));
+    moves.Add(ChessMove("b1", "b2", "pawn"));
+
+    return moves;
+}
+
+String Chess::FEN()
+{
+    return "";
+}
+
+void Chess::MakeRandomMove()
+{
+    // chess gives us all the possible moves in an array
+    // [ move1, move2, move3 ... ]
+    Array<ChessMove> possibleMoves = GetMoves();
+
+    // exit if the game is over
+    if (gameOver == true) return;
+
+    // chooses a random index in the list
+    unsigned int randomIdx = possibleMoves.Size() - 1; // TODO: Make random
+
+    // updates board state
+    Move(possibleMoves[randomIdx]);
+
+    // changes board visual state
+    board->Position(FEN());
+}
+
 
 void Chess::Update()
 {
@@ -76,6 +115,12 @@ void Chess::Update()
     printf("Glasses position: '%f %f %f\n", input.Head.x, input.Head.y, input.Head.z);
     printf("camera position: '%f %f %f\n", camera->position.x, camera->position.y, camera->position.z);
 #endif
+
+    if (int(timer->TimeSinceStarted()) > 5000)
+    {
+        MakeRandomMove();
+        timer->Reset();
+    }
 
     if (input.Mouse.Released)
     {

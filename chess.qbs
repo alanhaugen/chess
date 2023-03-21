@@ -51,6 +51,8 @@ solid {
             "source/board.h",
             "source/chess.cpp",
             "source/chess.h",
+            "source/chessmove.cpp",
+            "source/chessmove.h",
             "source/main.cpp",
             "source/main.h",
         ]

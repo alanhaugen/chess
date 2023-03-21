@@ -53,15 +53,35 @@ void Chess::Move(ChessMove move)
 Array<ChessMove> Chess::GetMoves()
 {
     Array<ChessMove> moves;
-    moves.Add(ChessMove("a1", "a2", "pawn"));
-    moves.Add(ChessMove("b1", "b2", "pawn"));
+
+    for (unsigned int i = 0; i < board->components.Size(); i++)
+    {
+        Actor *piece = dynamic_cast<Actor*>(board->components[i]);
+
+        if (piece->tag.Empty() == false)
+        {
+            moves.Add(ChessMove("a1", "a2", piece->tag));
+        }
+    }
 
     return moves;
 }
 
 String Chess::FEN()
 {
-    return "";
+    String fen;
+
+    for (unsigned int i = 0; i < board->components.Size(); i++)
+    {
+        Actor *piece = dynamic_cast<Actor*>(board->components[i]);
+
+        if (piece->tag.Empty() == false)
+        {
+            fen = fen + " a1";
+        }
+    }
+
+    return fen;
 }
 
 void Chess::MakeRandomMove()

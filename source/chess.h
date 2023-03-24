@@ -2,6 +2,7 @@
 #define CHESS_H
 
 #include <core/application.h>
+#include "core/components/cell.h"
 #include <core/components/camera.h>
 #include <core/components/fpscamera.h>
 #include <core/components/fpscounter.h>
@@ -20,6 +21,17 @@ private:
     Background *bg;
     PointLight *light;
 
+    enum
+    {
+        PAWN,
+        BISHOP,
+        KNIGHT,
+        ROOK,
+        QUEEN,
+        KING
+    };
+
+    Cell *chess;
 
     bool dragging;
     Actor *activePiece;

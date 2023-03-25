@@ -45,6 +45,8 @@ void Chess::Init()
     timer = Application::GetTime();
 
     gameOver = false;
+    isWhitesTurn = true;
+    moves = 0;
 
     chess = new Cell(8, 8);
 
@@ -57,14 +59,14 @@ void Chess::Init()
     chess->At(0, 6) = KNIGHT;
     chess->At(0, 7) = ROOK;
 
-    chess->At(7, 0) = ROOK;
-    chess->At(7, 1) = KNIGHT;
-    chess->At(7, 2) = BISHOP;
-    chess->At(7, 3) = QUEEN;
-    chess->At(7, 4) = KING;
-    chess->At(7, 5) = BISHOP;
-    chess->At(7, 6) = KNIGHT;
-    chess->At(7, 7) = ROOK;
+    chess->At(7, 0) = rook;
+    chess->At(7, 1) = knight;
+    chess->At(7, 2) = bishop;
+    chess->At(7, 3) = queen;
+    chess->At(7, 4) = king;
+    chess->At(7, 5) = bishop;
+    chess->At(7, 6) = knight;
+    chess->At(7, 7) = rook;
 
     chess->At(1, 0) = PAWN;
     chess->At(1, 1) = PAWN;
@@ -75,14 +77,14 @@ void Chess::Init()
     chess->At(1, 6) = PAWN;
     chess->At(1, 7) = PAWN;
 
-    chess->At(6, 0) = PAWN;
-    chess->At(6, 1) = PAWN;
-    chess->At(6, 2) = PAWN;
-    chess->At(6, 3) = PAWN;
-    chess->At(6, 4) = PAWN;
-    chess->At(6, 5) = PAWN;
-    chess->At(6, 6) = PAWN;
-    chess->At(6, 7) = PAWN;
+    chess->At(6, 0) = pawn;
+    chess->At(6, 1) = pawn;
+    chess->At(6, 2) = pawn;
+    chess->At(6, 3) = pawn;
+    chess->At(6, 4) = pawn;
+    chess->At(6, 5) = pawn;
+    chess->At(6, 6) = pawn;
+    chess->At(6, 7) = pawn;
 }
 
 void Chess::Move(ChessMove move)
@@ -101,20 +103,152 @@ Array<ChessMove> Chess::GetMoves()
     return moves;
 }
 
+// Forsyth–Edwards Notation
+// https://en.wikipedia.org/wiki/Forsyth%E2%80%93Edwards_Notation
 String Chess::FEN()
 {
     String fen;
 
+    // Record board pieces state
     for (unsigned int i = 0; i < chess->width; i++)
     {
         for (unsigned int j = 0; j < chess->height; j++)
         {
-            if (chess->At(i, j) != 0)
+            int piece = chess->At(i, j);
+
+            if (piece != 0)
             {
-                fen = fen + " a1";
+                String code;
+
+                switch(piece)
+                {
+                case PAWN:
+                    code.Append("P");
+                    break;
+                case QUEEN:
+                    code.Append("Q");
+                    break;
+                case KING:
+                    code.Append("K");
+                    break;
+                case BISHOP:
+                    code.Append("B");
+                    break;
+                case ROOK:
+                    code.Append("R");
+                    break;
+                case KNIGHT:
+                    code.Append("K");
+                    break;
+                case pawn:
+                    code.Append("p");
+                    break;
+                case queen:
+                    code.Append("q");
+                    break;
+                case king:
+                    code.Append("k");
+                    break;
+                case bishop:
+                    code.Append("b");
+                    break;
+                case rook:
+                    code.Append("r");
+                    break;
+                case knight:
+                    code.Append("k");
+                    break;
+                default:
+                    LogWarning("Unknown chess piece detected");
+                }
+
+                switch(i)
+                {
+                case 0:
+                    code.Append("a");
+                    break;
+                case 1:
+                    code.Append("b");
+                    break;
+                case 2:
+                    code.Append("c");
+                    break;
+                case 3:
+                    code.Append("d");
+                    break;
+                case 4:
+                    code.Append("e");
+                    break;
+                case 5:
+                    code.Append("f");
+                    break;
+                case 6:
+                    code.Append("g");
+                    break;
+                case 7:
+                    code.Append("h");
+                    break;
+                default:
+                    LogWarning("Unknown horizontal position of chess piece detected");
+                }
+
+                switch(j)
+                {
+                case 0:
+                    code.Append("1");
+                    break;
+                case 1:
+                    code.Append("2");
+                    break;
+                case 2:
+                    code.Append("3");
+                    break;
+                case 3:
+                    code.Append("4");
+                    break;
+                case 4:
+                    code.Append("5");
+                    break;
+                case 5:
+                    code.Append("6");
+                    break;
+                case 6:
+                    code.Append("7");
+                    break;
+                case 7:
+                    code.Append("8");
+                    break;
+                default:
+                    LogWarning("Unknown vertical position of chess piece detected");
+                }
+
+                fen.Append(code);
+                fen.Append(" ");
             }
         }
     }
+
+    // Record whose turn it is
+    if (isWhitesTurn)
+    {
+        fen.Append("w");
+    }
+    else
+    {
+        fen.Append("b");
+    }
+
+    // Is castling possible TODO: Add this
+    fen.Append(" - ");
+
+    // En passant target squar TODO: Add this
+    fen.Append(" - ");
+
+    // Halfmove clock TODO: Add this
+    fen.Append(" 0 ");
+
+    // Fullmove number
+    fen.Append(moves);
 
     return fen;
 }

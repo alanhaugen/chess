@@ -319,5 +319,29 @@ Board::~Board()
 
 void Board::Position(String fen)
 {
+    Array<String> words = fen.ToWords();
 
+    for (unsigned int i = 0; i < words.Size(); i++)
+    {
+        Log(words[i]);
+    }
+
+    for (unsigned int i = 0; i < components.Size(); i++)
+    {
+        Actor *piece = dynamic_cast<Actor*>(components[i]);
+
+        if (piece->tag.Empty() == false)
+        {
+            // Search fen for piece position and state information
+            int dead = fen.IndexOf("x");
+            int queenPosition = fen.IndexOf("q");
+            if (queenPosition != -1)
+            {
+                int xpos = fen[queenPosition-1];
+                int ypos = fen[queenPosition+1];
+            }
+
+            // Put piece in position based on fen
+        }
+    }
 }

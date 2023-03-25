@@ -28,7 +28,13 @@ private:
         KNIGHT,
         ROOK,
         QUEEN,
-        KING
+        KING,
+        pawn, // NOTE: As according to FEN chess notation, lower-case => black pieces
+        bishop,
+        knight,
+        rook,
+        queen,
+        king
     };
 
     Cell *chess;
@@ -38,6 +44,8 @@ private:
     ITime *timer;
 
     bool gameOver;
+    bool isWhitesTurn;
+    int moves;
 
     void Move(ChessMove);
     void MakeRandomMove();

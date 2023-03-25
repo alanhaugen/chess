@@ -335,16 +335,39 @@ void Board::Position(String fen)
             // Search fen for piece position and state information
             for (unsigned int j = 0; j < words.Size(); j++)
             {
-                int type = fen.IndexOf("q");
-                int dead = fen.IndexOf("x");
-                int position = fen.IndexOf("q");
-                /*if (queenPosition != -1)
-                {
-                    int xpos = fen[queenPosition-1];
-                    int ypos = fen[queenPosition+1];
-                }*/
+                String word = words[j];
 
-                // Put piece in position based on fen
+                int type = word[0];
+
+                switch (type)
+                {
+                    case 'P':
+                        if (piece->tag == "pawn")
+                        {
+                            int dead = word.IndexOf("x");
+                            if (dead == -1)
+                            {
+                                int positionHorizontal = word[1];
+                                int positionVertical = word[2];
+
+                                switch(positionHorizontal)
+                                {
+                                default:
+                                    LogWarning("Failed to move piece horizontally");
+                                }
+
+                                switch(positionVertical)
+                                {
+                                default:
+                                    LogWarning("Failed to move piece vertically");
+                                }
+
+                                // Put piece in position based on fen
+                                piece->matrix.position = glm::vec3();
+                            }
+                        }
+                        break;
+                }
             }
         }
     }

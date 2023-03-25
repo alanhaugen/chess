@@ -333,15 +333,19 @@ void Board::Position(String fen)
         if (piece->tag.Empty() == false)
         {
             // Search fen for piece position and state information
-            int dead = fen.IndexOf("x");
-            int queenPosition = fen.IndexOf("q");
-            if (queenPosition != -1)
+            for (unsigned int j = 0; j < words.Size(); j++)
             {
-                int xpos = fen[queenPosition-1];
-                int ypos = fen[queenPosition+1];
-            }
+                int type = fen.IndexOf("q");
+                int dead = fen.IndexOf("x");
+                int position = fen.IndexOf("q");
+                /*if (queenPosition != -1)
+                {
+                    int xpos = fen[queenPosition-1];
+                    int ypos = fen[queenPosition+1];
+                }*/
 
-            // Put piece in position based on fen
+                // Put piece in position based on fen
+            }
         }
     }
 }

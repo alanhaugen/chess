@@ -14,43 +14,43 @@ Board::Board()
     king = new Actor();
     king->matrix.Translate(glm::vec3(3 * 4, 0, -3));
     king->Add(new Mesh("data/blender/king.blend", vert, frag));
-    king->tag = "king";
+    king->tag = "KING";
     king->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     bishop1 = new Actor();
     bishop1->matrix.Translate(glm::vec3(3 * 2, 0, -3));
     bishop1->Add(new Mesh("data/blender/bishop.blend", vert, frag));
-    bishop1->tag = "bishop1";
+    bishop1->tag = "BISHOP1";
     bishop1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     bishop2 = new Actor();
     bishop2->Add(new Mesh("data/blender/bishop.blend", vert, frag));
     bishop2->matrix.Translate(glm::vec3(3 * 5, 0, -3));
-    bishop2->tag = "bishop2";
+    bishop2->tag = "BISHOP2";
     bishop2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     knight1 = new Actor();
     knight1->Add(new Mesh("data/blender/knight.blend", vert, frag));
     knight1->matrix.Translate(glm::vec3(3 * 1, 0, -3));
-    knight1->tag = "knight1";
+    knight1->tag = "KNIGHT1";
     knight1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     knight2 = new Actor();
     knight2->Add(new Mesh("data/blender/knight.blend", vert, frag));
     knight2->matrix.Translate(glm::vec3(3 * 6, 0, -3));
-    knight2->tag = "knight2";
+    knight2->tag = "KNIGHT2";
     knight2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     rook1 = new Actor();
     rook1->Add(new Mesh("data/blender/rook.blend", vert, frag));
     rook1->matrix.Translate(glm::vec3(3 * 0, 0, -3));
-    rook1->tag = "rook1";
+    rook1->tag = "ROOK1";
     rook1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     rook2 = new Actor();
     rook2->Add(new Mesh("data/blender/rook.blend", vert, frag));
     rook2->matrix.Translate(glm::vec3(3 * 7, 0, -3));
-    rook2->tag = "rook2";
+    rook2->tag = "ROOK2";
     rook2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     pawn1 = new Actor();
@@ -88,19 +88,19 @@ Board::Board()
     pawn7->matrix.Translate(glm::vec3(3 * 6, 0, 0));
     pawn8->matrix.Translate(glm::vec3(3 * 7, 0, 0));
 
-    pawn1->tag = "pawn1";
-    pawn2->tag = "pawn2";
-    pawn3->tag = "pawn3";
-    pawn4->tag = "pawn4";
-    pawn5->tag = "pawn5";
-    pawn6->tag = "pawn6";
-    pawn7->tag = "pawn7";
-    pawn8->tag = "pawn8";
+    pawn1->tag = "PAWN1";
+    pawn2->tag = "PAWN2";
+    pawn3->tag = "PAWN3";
+    pawn4->tag = "PAWN4";
+    pawn5->tag = "PAWN5";
+    pawn6->tag = "PAWN6";
+    pawn7->tag = "PAWN7";
+    pawn8->tag = "PAWN8";
 
     queen = new Actor();
     queen->Add(new Mesh("data/blender/queen.blend", vert, frag));
     queen->matrix.Translate(glm::vec3(3 * 3, 0, -3));
-    queen->tag = "queen";
+    queen->tag = "QUEEN";
     queen->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     components.Add(board);

@@ -261,20 +261,50 @@ void MovePiece(Actor *piece, String word)
     int positionHorizontal = word[1];
     int positionVertical = word[2];
 
+    positionVertical = positionVertical - '0';
+
     switch(positionHorizontal)
     {
+    case 'a':
+        positionHorizontal = 1;
+        break;
+    case 'b':
+        positionHorizontal = 2;
+        break;
+    case 'c':
+        positionHorizontal = 3;
+        break;
+    case 'd':
+        positionHorizontal = 4;
+        break;
+    case 'e':
+        positionHorizontal = 5;
+        break;
+    case 'f':
+        positionHorizontal = 6;
+        break;
+    case 'g':
+        positionHorizontal = 7;
+        break;
+    case 'h':
+        positionHorizontal = 8;
+        break;
     default:
-        LogWarning("Failed to move piece horizontally");
+        LogWarning("Invalid horizontal position");
     }
 
-    switch(positionVertical)
+    if (positionVertical < 1 || positionVertical > 8)
     {
-    default:
-        LogWarning("Failed to move piece vertically");
+        LogWarning("Invalid vertical position");
     }
+
+    float xpos, ypos;
+
+    xpos = positionHorizontal * 10;
+    ypos = positionVertical   * 10;
 
     // Put piece in position based on fen
-    piece->matrix.position = glm::vec3();
+    piece->matrix.matrix[3] = glm::vec4(xpos, 0.0f, ypos, 1.0f);
 }
 
 void Board::Position(String fen)
@@ -296,8 +326,11 @@ void Board::Position(String fen)
 
                 switch (type)
                 {
-                case 'P':
-                    if (piece->tag == "pawn")
+                case 'R':
+                    Log("Rook");
+                    break;
+                case 'K':
+                    if (piece->tag == "KING")
                     {
                         int dead = word.IndexOf("x");
                         if (dead == -1)
@@ -306,6 +339,8 @@ void Board::Position(String fen)
                         }
                     }
                     break;
+                default:
+                    LogWarning("Piece code unknown");
                 }
             }
         }

@@ -51,40 +51,40 @@ void Chess::Init()
     chess = new Cell(8, 8);
 
     chess->At(0, 0) = ROOK;
-    chess->At(0, 1) = KNIGHT;
-    chess->At(0, 2) = BISHOP;
-    chess->At(0, 3) = KING;
-    chess->At(0, 4) = QUEEN;
-    chess->At(0, 5) = BISHOP;
-    chess->At(0, 6) = KNIGHT;
-    chess->At(0, 7) = ROOK;
+    chess->At(1, 0) = KNIGHT;
+    chess->At(2, 0) = BISHOP;
+    chess->At(3, 0) = QUEEN;
+    chess->At(4, 0) = KING;
+    chess->At(5, 0) = BISHOP;
+    chess->At(6, 0) = KNIGHT;
+    chess->At(7, 0) = ROOK;
 
-    chess->At(7, 0) = rook;
-    chess->At(7, 1) = knight;
-    chess->At(7, 2) = bishop;
-    chess->At(7, 3) = queen;
-    chess->At(7, 4) = king;
-    chess->At(7, 5) = bishop;
-    chess->At(7, 6) = knight;
+    chess->At(0, 7) = rook;
+    chess->At(1, 7) = knight;
+    chess->At(2, 7) = bishop;
+    chess->At(3, 7) = king;
+    chess->At(4, 7) = queen;
+    chess->At(5, 7) = bishop;
+    chess->At(6, 7) = knight;
     chess->At(7, 7) = rook;
 
-    chess->At(1, 0) = PAWN;
+    chess->At(0, 1) = PAWN;
     chess->At(1, 1) = PAWN;
-    chess->At(1, 2) = PAWN;
-    chess->At(1, 3) = PAWN;
-    chess->At(1, 4) = PAWN;
-    chess->At(1, 5) = PAWN;
-    chess->At(1, 6) = PAWN;
-    chess->At(1, 7) = PAWN;
+    chess->At(2, 1) = PAWN;
+    chess->At(3, 1) = PAWN;
+    chess->At(4, 1) = PAWN;
+    chess->At(5, 1) = PAWN;
+    chess->At(6, 1) = PAWN;
+    chess->At(7, 1) = PAWN;
 
-    chess->At(6, 0) = pawn;
-    chess->At(6, 1) = pawn;
-    chess->At(6, 2) = pawn;
-    chess->At(6, 3) = pawn;
-    chess->At(6, 4) = pawn;
-    chess->At(6, 5) = pawn;
+    chess->At(0, 6) = pawn;
+    chess->At(1, 6) = pawn;
+    chess->At(2, 6) = pawn;
+    chess->At(3, 6) = pawn;
+    chess->At(4, 6) = pawn;
+    chess->At(5, 6) = pawn;
     chess->At(6, 6) = pawn;
-    chess->At(6, 7) = pawn;
+    chess->At(7, 6) = pawn;
 }
 
 void Chess::Move(ChessMove move)
@@ -116,7 +116,7 @@ String Chess::FEN()
         {
             int piece = chess->At(i, j);
 
-            if (piece != 0)
+            if (piece != -1)
             {
                 String code;
 
@@ -138,7 +138,7 @@ String Chess::FEN()
                     code.Append("R");
                     break;
                 case KNIGHT:
-                    code.Append("K");
+                    code.Append("N");
                     break;
                 case pawn:
                     code.Append("p");
@@ -156,7 +156,7 @@ String Chess::FEN()
                     code.Append("r");
                     break;
                 case knight:
-                    code.Append("k");
+                    code.Append("n");
                     break;
                 default:
                     LogWarning("Unknown chess piece detected");

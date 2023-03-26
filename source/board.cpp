@@ -261,6 +261,7 @@ void MovePiece(Actor *piece, String word)
     int positionHorizontal = word[1];
     int positionVertical = word[2];
 
+    // Convert char to number
     positionVertical = positionVertical - '0';
 
     switch(positionHorizontal)
@@ -300,8 +301,8 @@ void MovePiece(Actor *piece, String word)
 
     float xpos, ypos;
 
-    xpos = positionHorizontal * 10;
-    ypos = positionVertical   * 10;
+    xpos = (positionHorizontal - 1) * 3;
+    ypos = positionVertical   * -3;
 
     // Put piece in position based on fen
     piece->matrix.matrix[3] = glm::vec4(xpos, 0.0f, ypos, 1.0f);

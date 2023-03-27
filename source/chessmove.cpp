@@ -2,15 +2,13 @@
 
 ChessMove::ChessMove()
 {
-    from = "";
     to = "";
     pieceType = "";
     capture = false;
 }
 
-ChessMove::ChessMove(String from_, String to_, String type_)
+ChessMove::ChessMove(String to_, String type_)
 {
-    from = from_;
     to = to_;
     pieceType = type_;
     capture = true;

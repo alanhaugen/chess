@@ -8,7 +8,7 @@ class ChessMove : public Command
 {
 public:
     ChessMove();
-    ChessMove(String from_, String to_, String type_);
+    ChessMove(String to_, String type_);
     String algebraicNotation;
 
     void Execute();
@@ -17,7 +17,6 @@ public:
 
 private:
     bool capture;
-    String from;
     String to;
 
     String pieceType;

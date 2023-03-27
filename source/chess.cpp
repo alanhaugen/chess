@@ -34,7 +34,7 @@ void Chess::Init()
     fpsCamera->UpdateCamera();
 
     components.Add(camera);
-    components.Add(fpsCamera);
+    //components.Add(fpsCamera);
     components.Add(fps);
     components.Add(bg);
     components.Add(board);
@@ -95,9 +95,44 @@ Array<ChessMove> Chess::GetMoves()
 {
     Array<ChessMove> moves;
 
-    for (unsigned int i = 0; i < chess->cells.Size(); i++)
+    for (unsigned int x = 0; x < chess->width; x++)
     {
-        moves.Add(ChessMove("a1", "a2", "tag"));
+        for (unsigned int y = 0; y < chess->height; y++)
+        {
+            int type = chess->At(x, y);
+
+            /*int a = chess->At(x+1, y);
+            int b = chess->At(x-1, y);
+            int c = chess->At(x, y+1);
+            int d = chess->At(x, y-1);*/
+
+            if (type != -1)
+            {
+                switch(type)
+                {
+                case 'K':
+                    moves.Add(ChessMove("a1", type));
+                    break;
+                case 'Q':
+                    moves.Add(ChessMove("a1", type));
+                    break;
+                case 'R':
+                    moves.Add(ChessMove("a1", type));
+                    break;
+                case 'P':
+                    moves.Add(ChessMove("a1", type));
+                    break;
+                case 'N':
+                    moves.Add(ChessMove("a1", type));
+                    break;
+                case 'B':
+                    moves.Add(ChessMove("a1", type));
+                    break;
+                default:
+                    LogWarning("Piece code unknown");
+                }
+            }
+        }
     }
 
     return moves;
@@ -263,10 +298,10 @@ void Chess::MakeRandomMove()
     if (gameOver == true) return;
 
     // Chooses a random index in the list
-    unsigned int randomIdx = possibleMoves.Size() - 1; // TODO: Make random
+    //unsigned int randomIdx = possibleMoves.Size() - 1; // TODO: Make random
 
     // Updates board state
-    Move(possibleMoves[randomIdx]);
+    //Move(possibleMoves[randomIdx]);
 
     // Changes board visual state
     board->Position(FEN());

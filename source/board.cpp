@@ -14,43 +14,36 @@ Board::Board()
     king = new Actor();
     king->matrix.Translate(glm::vec3(3 * 4, 0, -3));
     king->Add(new Mesh("data/blender/king.blend", vert, frag));
-    king->tag = "KING";
     king->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     bishop1 = new Actor();
     bishop1->matrix.Translate(glm::vec3(3 * 2, 0, -3));
     bishop1->Add(new Mesh("data/blender/bishop.blend", vert, frag));
-    bishop1->tag = "BISHOP1";
     bishop1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     bishop2 = new Actor();
     bishop2->Add(new Mesh("data/blender/bishop.blend", vert, frag));
     bishop2->matrix.Translate(glm::vec3(3 * 5, 0, -3));
-    bishop2->tag = "BISHOP2";
     bishop2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     knight1 = new Actor();
     knight1->Add(new Mesh("data/blender/knight.blend", vert, frag));
     knight1->matrix.Translate(glm::vec3(3 * 1, 0, -3));
-    knight1->tag = "KNIGHT1";
     knight1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     knight2 = new Actor();
     knight2->Add(new Mesh("data/blender/knight.blend", vert, frag));
     knight2->matrix.Translate(glm::vec3(3 * 6, 0, -3));
-    knight2->tag = "KNIGHT2";
     knight2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     rook1 = new Actor();
     rook1->Add(new Mesh("data/blender/rook.blend", vert, frag));
     rook1->matrix.Translate(glm::vec3(3 * 0, 0, -3));
-    rook1->tag = "ROOK1";
     rook1->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     rook2 = new Actor();
     rook2->Add(new Mesh("data/blender/rook.blend", vert, frag));
     rook2->matrix.Translate(glm::vec3(3 * 7, 0, -3));
-    rook2->tag = "ROOK2";
     rook2->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     pawn1 = new Actor();
@@ -88,19 +81,9 @@ Board::Board()
     pawn7->matrix.Translate(glm::vec3(3 * 6, 0, 0));
     pawn8->matrix.Translate(glm::vec3(3 * 7, 0, 0));
 
-    pawn1->tag = "PAWN1";
-    pawn2->tag = "PAWN2";
-    pawn3->tag = "PAWN3";
-    pawn4->tag = "PAWN4";
-    pawn5->tag = "PAWN5";
-    pawn6->tag = "PAWN6";
-    pawn7->tag = "PAWN7";
-    pawn8->tag = "PAWN8";
-
     queen = new Actor();
     queen->Add(new Mesh("data/blender/queen.blend", vert, frag));
     queen->matrix.Translate(glm::vec3(3 * 3, 0, -3));
-    queen->tag = "QUEEN";
     queen->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
     components.Add(board);
@@ -129,43 +112,36 @@ Board::Board()
     pking->Add(new Mesh("data/blender/king.blend", vert, frag));
     pking->matrix.Translate(glm::vec3(3 * 4, 0, 19));
     pking->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
-    pking->tag = "king";
 
     pbishop1 = new Actor();
     pbishop1->Add(new Mesh("data/blender/bishop.blend", vert, frag));
     pbishop1->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pbishop1->matrix.Translate(glm::vec3(3 * 2, 0, 19));
-    pbishop1->tag = "bishop1";
 
     pbishop2 = new Actor();
     pbishop2->Add(new Mesh("data/blender/bishop.blend", vert, frag));
     pbishop2->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pbishop2->matrix.Translate(glm::vec3(3 * 5, 0, 19));
-    pbishop2->tag = "bishop2";
 
     pknight1 = new Actor();
     pknight1->Add(new Mesh("data/blender/knight.blend", vert, frag));
     pknight1->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pknight1->matrix.Translate(glm::vec3(3 * 1, 0, 19));
-    pknight1->tag = "knight1";
 
     pknight2 = new Actor();
     pknight2->Add(new Mesh("data/blender/knight.blend", vert, frag));
     pknight2->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pknight2->matrix.Translate(glm::vec3(3 * 6, 0, 19));
-    pknight2->tag = "knight2";
 
     prook1 = new Actor();
     prook1->Add(new Mesh("data/blender/rook.blend", vert, frag));
     prook1->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     prook1->matrix.Translate(glm::vec3(3 * 0, 0, 19));
-    prook1->tag = "rook1";
 
     prook2 = new Actor();
     prook2->Add(new Mesh("data/blender/rook.blend", vert, frag));
     prook2->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     prook2->matrix.Translate(glm::vec3(3 * 7, 0, 19));
-    prook2->tag = "rook2";
 
     ppawn1 = new Actor();
     ppawn2 = new Actor();
@@ -202,20 +178,10 @@ Board::Board()
     ppawn7->matrix.Translate(glm::vec3(3 * 6, 0, 15));
     ppawn8->matrix.Translate(glm::vec3(3 * 7, 0, 15));
 
-    ppawn1->tag = "pawn1";
-    ppawn2->tag = "pawn2";
-    ppawn3->tag = "pawn3";
-    ppawn4->tag = "pawn4";
-    ppawn5->tag = "pawn5";
-    ppawn6->tag = "pawn6";
-    ppawn7->tag = "pawn7";
-    ppawn8->tag = "pawn8";
-
     pqueen = new Actor();
     pqueen->Add(new Mesh("data/blender/queen.blend", vert, frag));
     pqueen->Uniform("colour", glm::vec4(.3, .3, .3, 1.0));
     pqueen->matrix.Translate(glm::vec3(3 * 3, 0, 19));
-    pqueen->tag = "queen";
 
     components.Add(pking);
     components.Add(ppawn1);
@@ -233,6 +199,8 @@ Board::Board()
     components.Add(prook1);
     components.Add(prook2);
     components.Add(pqueen);
+
+    UpdateTags();
 }
 
 Board::~Board()
@@ -259,10 +227,17 @@ Board::~Board()
 void MovePiece(Actor *piece, String word)
 {
     int positionHorizontal = word[1];
-    int positionVertical = word[2];
+    int positionVertical   = word[2];
 
     // Convert char to number
     positionVertical = positionVertical - '0';
+
+    // Skip if dead
+    int dead = word.IndexOf("x");
+    if (dead != -1)
+    {
+        return;
+    }
 
     switch(positionHorizontal)
     {
@@ -302,48 +277,117 @@ void MovePiece(Actor *piece, String word)
     float xpos, ypos;
 
     xpos = (positionHorizontal - 1) * 3;
-    ypos = positionVertical   * -3;
+    ypos = (positionVertical   * 3) - 6;
 
     // Put piece in position based on fen
     piece->matrix.matrix[3] = glm::vec4(xpos, 0.0f, ypos, 1.0f);
+
+    // Disable piece
+    piece->tag = "";
+}
+
+void Board::UpdateTags()
+{
+    pqueen->tag = "queen";
+    ppawn1->tag = "pawn1";
+    ppawn2->tag = "pawn2";
+    ppawn3->tag = "pawn3";
+    ppawn4->tag = "pawn4";
+    ppawn5->tag = "pawn5";
+    ppawn6->tag = "pawn6";
+    ppawn7->tag = "pawn7";
+    ppawn8->tag = "pawn8";
+    prook2->tag = "rook2";
+    prook1->tag = "rook1";
+    pknight2->tag = "knight2";
+    pknight1->tag = "knight1";
+    pbishop2->tag = "bishop2";
+    pbishop1->tag = "bishop1";
+    pking->tag = "king";
+    queen->tag = "QUEEN";
+    rook2->tag = "ROOK2";
+    rook1->tag = "ROOK1";
+    knight2->tag = "KNIGHT2";
+    knight1->tag = "KNIGHT1";
+    bishop2->tag = "BISHOP2";
+    bishop1->tag = "BISHOP1";
+    king->tag = "KING";
+    pawn1->tag = "PAWN1";
+    pawn2->tag = "PAWN2";
+    pawn3->tag = "PAWN3";
+    pawn4->tag = "PAWN4";
+    pawn5->tag = "PAWN5";
+    pawn6->tag = "PAWN6";
+    pawn7->tag = "PAWN7";
+    pawn8->tag = "PAWN8";
 }
 
 void Board::Position(String fen)
 {
     Array<String> words = fen.ToWords();
 
-    for (unsigned int i = 0; i < components.Size(); i++)
+    // Search fen for piece position and state information
+    for (unsigned int i = 0; i < words.Size(); i++)
     {
-        Actor *piece = dynamic_cast<Actor*>(components[i]);
+        String word = words[i];
 
-        if (piece->tag.Empty() == false)
+        int type = word[0];
+
+        bool success = false;
+
+        for (unsigned int j = 0; j < components.Size() && success == false; j++)
         {
-            // Search fen for piece position and state information
-            for (unsigned int j = 0; j < words.Size(); j++)
+            Actor *piece = dynamic_cast<Actor*>(components[j]);
+
+            switch (type)
             {
-                String word = words[j];
-
-                int type = word[0];
-
-                switch (type)
+            case 'K':
+                if (piece->tag.IndexOf("KING") != -1)
                 {
-                case 'R':
-                    Log("Rook");
-                    break;
-                case 'K':
-                    if (piece->tag == "KING")
-                    {
-                        int dead = word.IndexOf("x");
-                        if (dead == -1)
-                        {
-                            MovePiece(piece, word);
-                        }
-                    }
-                    break;
-                default:
-                    LogWarning("Piece code unknown");
+                    MovePiece(piece, word);
+                    success = true;
                 }
+                break;
+            case 'Q':
+                if (piece->tag.IndexOf("QUEEN") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
+            case 'R':
+                if (piece->tag.IndexOf("ROOK") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
+            case 'P':
+                if (piece->tag.IndexOf("PAWN") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
+            case 'N':
+                if (piece->tag.IndexOf("KNIGHT") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
+            case 'B':
+                if (piece->tag.IndexOf("BISHOP") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
+            default:
+                LogWarning("Piece code unknown");
             }
         }
     }
+
+    UpdateTags();
 }

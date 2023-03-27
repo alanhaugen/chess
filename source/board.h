@@ -6,6 +6,9 @@
 
 class Board : public Actor
 {
+private:
+    void UpdateTags();
+
 public:
     Board();
     ~Board();

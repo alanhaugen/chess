@@ -383,6 +383,41 @@ void Board::Position(String fen)
                     success = true;
                 }
                 break;
+            case 'k':
+                if (piece->tag.IndexOf("king") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
+            case 'b':
+                if (piece->tag.IndexOf("bishop") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
+            case 'p':
+                if (piece->tag.IndexOf("pawn") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
+            case 'r':
+                if (piece->tag.IndexOf("rook") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
+            case 'q':
+                if (piece->tag.IndexOf("queen") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
             default:
                 LogWarning("Piece code unknown");
             }

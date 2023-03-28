@@ -411,6 +411,13 @@ void Board::Position(String fen)
                     success = true;
                 }
                 break;
+            case 'n':
+                if (piece->tag.IndexOf("knight") != -1)
+                {
+                    MovePiece(piece, word);
+                    success = true;
+                }
+                break;
             case 'q':
                 if (piece->tag.IndexOf("queen") != -1)
                 {

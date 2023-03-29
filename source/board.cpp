@@ -1,4 +1,5 @@
 #include "board.h"
+#include "chessmove.h"
 
 Board::Board()
 {
@@ -226,58 +227,12 @@ Board::~Board()
 
 void MovePiece(Actor *piece, String word)
 {
-    int positionHorizontal = word[1];
-    int positionVertical   = word[2];
-
-    // Convert char to number
-    positionVertical = positionVertical - '0';
-
-    // Skip if dead
-    int dead = word.IndexOf("x");
-    if (dead != -1)
-    {
-        return;
-    }
-
-    switch(positionHorizontal)
-    {
-    case 'a':
-        positionHorizontal = 1;
-        break;
-    case 'b':
-        positionHorizontal = 2;
-        break;
-    case 'c':
-        positionHorizontal = 3;
-        break;
-    case 'd':
-        positionHorizontal = 4;
-        break;
-    case 'e':
-        positionHorizontal = 5;
-        break;
-    case 'f':
-        positionHorizontal = 6;
-        break;
-    case 'g':
-        positionHorizontal = 7;
-        break;
-    case 'h':
-        positionHorizontal = 8;
-        break;
-    default:
-        LogWarning("Invalid horizontal position");
-    }
-
-    if (positionVertical < 1 || positionVertical > 8)
-    {
-        LogWarning("Invalid vertical position");
-    }
+    ChessMove move(word);
 
     float xpos, ypos;
 
-    xpos = (positionHorizontal - 1) * 3;
-    ypos = (positionVertical   * 3) - 6;
+    xpos = (move.position.startPos.x - 1) * 3;
+    ypos = (move.position.startPos.y * 3) - 6;
 
     // Put piece in position based on fen
     piece->matrix.matrix[3] = glm::vec4(xpos, 0.0f, ypos, 1.0f);

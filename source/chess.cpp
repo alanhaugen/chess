@@ -89,6 +89,125 @@ void Chess::Init()
 
 void Chess::Move(ChessMove move)
 {
+    int type = chess->At(move.position.startPos.x, move.position.startPos.y);
+
+    chess->At(move.position.startPos.x, move.position.startPos.y) = -1;
+    chess->At(move.position.endPos.x, move.position.endPos.y) = type;
+
+    isWhitesTurn = !isWhitesTurn;
+}
+
+Array<ChessMove> Chess::GetKingMoves(int x, int y, int type)
+{
+    Array<ChessMove> moves;
+
+    if (chess->At(x+1, y) == -1)
+    {
+        moves.Add(ChessMove(x, y, x+1, y, type));
+    }
+    if (chess->At(x-1, y) == -1)
+    {
+        moves.Add(ChessMove(x, y, x-1, y, type));
+    }
+    if (chess->At(x, y+1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x, y+1, type));
+    }
+    if (chess->At(x, y-1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x, y-1, type));
+    }
+    if (chess->At(x+1, y+1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x+1, y+1, type));
+    }
+    if (chess->At(x-1, y+1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x-1, y+1, type));
+    }
+    if (chess->At(x+1, y-1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x+1, y-1, type));
+    }
+    if (chess->At(x-1, y-1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x-1, y-1, type));
+    }
+
+    return moves;
+}
+
+Array<ChessMove> Chess::GetPawnMoves(int x, int y, int type)
+{
+    Array<ChessMove> moves;
+
+    if (type == PAWN)
+    {
+        moves.Add(ChessMove(x, y, x, y+1, type));
+    }
+    else if (type == pawn)
+    {
+        moves.Add(ChessMove(x, y, x, y-1, type));
+    }
+    else
+    {
+        LogError("GetPawnMoves called with illegal type");
+    }
+
+    return moves;
+}
+
+Array<ChessMove> Chess::GetRookMoves(int x, int y, int type)
+{
+    Array<ChessMove> moves;
+
+    return moves;
+}
+
+Array<ChessMove> Chess::GetQueenMoves(int x, int y, int type)
+{
+    Array<ChessMove> moves;
+
+    return moves;
+}
+
+Array<ChessMove> Chess::GetBishopMoves(int x, int y, int type)
+{
+    Array<ChessMove> moves;
+
+    return moves;
+}
+
+Array<ChessMove> Chess::GetKnightMoves(int x, int y, int type)
+{
+    Array<ChessMove> moves;
+
+    if (chess->At(x+1, y+2) == -1)
+    {
+        moves.Add(ChessMove(x, y, x+1, y+2, type));
+    }
+    if (chess->At(x-1, y+2) == -1)
+    {
+        moves.Add(ChessMove(x, y, x-1, y+2, type));
+    }
+    if (chess->At(x+2, y+1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x+2, y+1, type));
+    }
+    if (chess->At(x-2, y+1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x-2, y+1, type));
+    }
+    if (chess->At(x+2, y-1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x+2, y-1, type));
+    }
+    if (chess->At(x-2, y-1) == -1)
+    {
+        moves.Add(ChessMove(x, y, x-2, y-1, type));
+    }
+
+    return moves;
 }
 
 Array<ChessMove> Chess::GetMoves()
@@ -101,35 +220,59 @@ Array<ChessMove> Chess::GetMoves()
         {
             int type = chess->At(x, y);
 
-            /*int a = chess->At(x+1, y);
-            int b = chess->At(x-1, y);
-            int c = chess->At(x, y+1);
-            int d = chess->At(x, y-1);*/
-
             if (type != -1)
             {
-                switch(type)
+                if (isWhitesTurn)
                 {
-                case 'K':
-                    moves.Add(ChessMove("a1", type));
-                    break;
-                case 'Q':
-                    moves.Add(ChessMove("a1", type));
-                    break;
-                case 'R':
-                    moves.Add(ChessMove("a1", type));
-                    break;
-                case 'P':
-                    moves.Add(ChessMove("a1", type));
-                    break;
-                case 'N':
-                    moves.Add(ChessMove("a1", type));
-                    break;
-                case 'B':
-                    moves.Add(ChessMove("a1", type));
-                    break;
-                default:
-                    LogWarning("Piece code unknown");
+                    switch(type)
+                    {
+                    case KING:
+                        moves += GetKingMoves(x, y, type);
+                        break;
+                    case QUEEN:
+                        moves += GetQueenMoves(x, y, type);
+                        break;
+                    case ROOK:
+                        moves += GetRookMoves(x, y, type);
+                        break;
+                    case KNIGHT:
+                        moves += GetKnightMoves(x, y, type);
+                        break;
+                    case BISHOP:
+                        moves += GetBishopMoves(x, y, type);
+                        break;
+                    case PAWN:
+                        moves += GetPawnMoves(x, y, type);
+                        break;
+                    default:
+                        LogWarning("Piece either unknown or black");
+                    }
+                }
+                else
+                {
+                    switch (type)
+                    {
+                    case king:
+                        moves += GetKingMoves(x, y, type);
+                        break;
+                    case queen:
+                        moves += GetQueenMoves(x, y, type);
+                        break;
+                    case knight:
+                        moves += GetKnightMoves(x, y, type);
+                        break;
+                    case bishop:
+                        moves += GetBishopMoves(x, y, type);
+                        break;
+                    case rook:
+                        moves += GetRookMoves(x, y, type);
+                        break;
+                    case pawn:
+                        moves += GetPawnMoves(x, y, type);
+                        break;
+                    default:
+                        LogWarning("Piece either unknown or white");
+                    }
                 }
             }
         }
@@ -153,109 +296,8 @@ String Chess::FEN()
 
             if (piece != -1)
             {
-                String code;
-
-                switch(piece)
-                {
-                case PAWN:
-                    code.Append("P");
-                    break;
-                case QUEEN:
-                    code.Append("Q");
-                    break;
-                case KING:
-                    code.Append("K");
-                    break;
-                case BISHOP:
-                    code.Append("B");
-                    break;
-                case ROOK:
-                    code.Append("R");
-                    break;
-                case KNIGHT:
-                    code.Append("N");
-                    break;
-                case pawn:
-                    code.Append("p");
-                    break;
-                case queen:
-                    code.Append("q");
-                    break;
-                case king:
-                    code.Append("k");
-                    break;
-                case bishop:
-                    code.Append("b");
-                    break;
-                case rook:
-                    code.Append("r");
-                    break;
-                case knight:
-                    code.Append("n");
-                    break;
-                default:
-                    LogWarning("Unknown chess piece detected");
-                }
-
-                switch(i)
-                {
-                case 0:
-                    code.Append("a");
-                    break;
-                case 1:
-                    code.Append("b");
-                    break;
-                case 2:
-                    code.Append("c");
-                    break;
-                case 3:
-                    code.Append("d");
-                    break;
-                case 4:
-                    code.Append("e");
-                    break;
-                case 5:
-                    code.Append("f");
-                    break;
-                case 6:
-                    code.Append("g");
-                    break;
-                case 7:
-                    code.Append("h");
-                    break;
-                default:
-                    LogWarning("Unknown horizontal position of chess piece detected");
-                }
-
-                switch(j)
-                {
-                case 0:
-                    code.Append("1");
-                    break;
-                case 1:
-                    code.Append("2");
-                    break;
-                case 2:
-                    code.Append("3");
-                    break;
-                case 3:
-                    code.Append("4");
-                    break;
-                case 4:
-                    code.Append("5");
-                    break;
-                case 5:
-                    code.Append("6");
-                    break;
-                case 6:
-                    code.Append("7");
-                    break;
-                case 7:
-                    code.Append("8");
-                    break;
-                default:
-                    LogWarning("Unknown vertical position of chess piece detected");
-                }
+                ChessMove move(i, j, piece);
+                String code = move.algebraicNotation;
 
                 fen.Append(code);
                 fen.Append(" ");
@@ -298,10 +340,10 @@ void Chess::MakeRandomMove()
     if (gameOver == true) return;
 
     // Chooses a random index in the list
-    //unsigned int randomIdx = possibleMoves.Size() - 1; // TODO: Make random
+    unsigned int randomIdx = random.RandomRange(0, possibleMoves.Size());
 
     // Updates board state
-    //Move(possibleMoves[randomIdx]);
+    Move(possibleMoves[randomIdx]);
 
     // Changes board visual state
     board->Position(FEN());
@@ -343,7 +385,7 @@ void Chess::Update()
     printf("camera position: '%f %f %f\n", camera->position.x, camera->position.y, camera->position.z);
 #endif
 
-    if (int(timer->TimeSinceStarted()) > 5000)
+    if (int(timer->TimeSinceStarted()) > 1000)
     {
         MakeRandomMove();
         timer->Reset();

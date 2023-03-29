@@ -21,22 +21,6 @@ private:
     Background *bg;
     PointLight *light;
 
-    enum
-    {
-        PAWN,
-        BISHOP,
-        KNIGHT,
-        ROOK,
-        QUEEN,
-        KING,
-        pawn, // NOTE: As according to FEN chess notation, lower-case => black pieces
-        bishop,
-        knight,
-        rook,
-        queen,
-        king
-    };
-
     Cell *chess;
 
     bool dragging;
@@ -50,6 +34,12 @@ private:
     void Move(ChessMove);
     void MakeRandomMove();
     Array<ChessMove> GetMoves();
+    Array<ChessMove> GetKingMoves(int x, int y, int type);
+    Array<ChessMove> GetPawnMoves(int x, int y, int type);
+    Array<ChessMove> GetKnightMoves(int x, int y, int type);
+    Array<ChessMove> GetQueenMoves(int x, int y, int type);
+    Array<ChessMove> GetBishopMoves(int x, int y, int type);
+    Array<ChessMove> GetRookMoves(int x, int y, int type);
     String FEN();
 
 public:

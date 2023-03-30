@@ -91,45 +91,45 @@ void Chess::Move(ChessMove move)
 {
     int type = chess->At(move.position.startPos.x, move.position.startPos.y);
 
-    chess->At(move.position.startPos.x, move.position.startPos.y) = -1;
+    chess->At(move.position.startPos.x, move.position.startPos.y) = Cell::EMPTY;
     chess->At(move.position.endPos.x, move.position.endPos.y) = type;
 
     isWhitesTurn = !isWhitesTurn;
 }
 
-Array<ChessMove> Chess::GetKingMoves(int x, int y, int type)
+Array<ChessMove> Chess::GetKingMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
 
-    if (chess->At(x+1, y) == -1)
+    if (chess->At(x+1, y) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x+1, y, type));
     }
-    if (chess->At(x-1, y) == -1)
+    if (chess->At(x-1, y) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x-1, y, type));
     }
-    if (chess->At(x, y+1) == -1)
+    if (chess->At(x, y+1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x, y+1, type));
     }
-    if (chess->At(x, y-1) == -1)
+    if (chess->At(x, y-1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x, y-1, type));
     }
-    if (chess->At(x+1, y+1) == -1)
+    if (chess->At(x+1, y+1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x+1, y+1, type));
     }
-    if (chess->At(x-1, y+1) == -1)
+    if (chess->At(x-1, y+1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x-1, y+1, type));
     }
-    if (chess->At(x+1, y-1) == -1)
+    if (chess->At(x+1, y-1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x+1, y-1, type));
     }
-    if (chess->At(x-1, y-1) == -1)
+    if (chess->At(x-1, y-1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x-1, y-1, type));
     }
@@ -137,17 +137,23 @@ Array<ChessMove> Chess::GetKingMoves(int x, int y, int type)
     return moves;
 }
 
-Array<ChessMove> Chess::GetPawnMoves(int x, int y, int type)
+Array<ChessMove> Chess::GetPawnMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
 
     if (type == PAWN)
     {
-        moves.Add(ChessMove(x, y, x, y+1, type));
+        if (chess->At(x, y+1) == Cell::EMPTY)
+        {
+            moves.Add(ChessMove(x, y, x, y+1, type));
+        }
     }
     else if (type == pawn)
     {
-        moves.Add(ChessMove(x, y, x, y-1, type));
+        if (chess->At(x, y-1) == Cell::EMPTY)
+        {
+            moves.Add(ChessMove(x, y, x, y-1, type));
+        }
     }
     else
     {
@@ -157,54 +163,62 @@ Array<ChessMove> Chess::GetPawnMoves(int x, int y, int type)
     return moves;
 }
 
-Array<ChessMove> Chess::GetRookMoves(int x, int y, int type)
+Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
 
     return moves;
 }
 
-Array<ChessMove> Chess::GetQueenMoves(int x, int y, int type)
+Array<ChessMove> Chess::GetQueenMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
 
     return moves;
 }
 
-Array<ChessMove> Chess::GetBishopMoves(int x, int y, int type)
+Array<ChessMove> Chess::GetBishopMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
 
     return moves;
 }
 
-Array<ChessMove> Chess::GetKnightMoves(int x, int y, int type)
+Array<ChessMove> Chess::GetKnightMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
 
-    if (chess->At(x+1, y+2) == -1)
+    if (chess->At(x+1, y+2) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x+1, y+2, type));
     }
-    if (chess->At(x-1, y+2) == -1)
+    if (chess->At(x-1, y+2) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x-1, y+2, type));
     }
-    if (chess->At(x+2, y+1) == -1)
+    if (chess->At(x+2, y+1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x+2, y+1, type));
     }
-    if (chess->At(x-2, y+1) == -1)
+    if (chess->At(x-2, y+1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x-2, y+1, type));
     }
-    if (chess->At(x+2, y-1) == -1)
+    if (chess->At(x+2, y-1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x+2, y-1, type));
     }
-    if (chess->At(x-2, y-1) == -1)
+    if (chess->At(x-2, y-1) == Cell::EMPTY)
     {
         moves.Add(ChessMove(x, y, x-2, y-1, type));
+    }
+    if (chess->At(x+1, y-2) == Cell::EMPTY)
+    {
+        moves.Add(ChessMove(x, y, x+1, y-2, type));
+    }
+    if (chess->At(x-1, y-2) == Cell::EMPTY)
+    {
+        moves.Add(ChessMove(x, y, x-1, y-2, type));
     }
 
     return moves;
@@ -276,6 +290,11 @@ Array<ChessMove> Chess::GetMoves()
                 }
             }
         }
+    }
+
+    if (moves.Empty())
+    {
+        gameOver = true;
     }
 
     return moves;

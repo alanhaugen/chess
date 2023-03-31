@@ -2,7 +2,7 @@
 
 A simple chess game implemented with solid
 
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+![Alt Text](https://www.dropbox.com/s/3ui3wiy7a3l5obt/output.gif)
 
 
 ## Attribution

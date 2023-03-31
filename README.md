@@ -2,6 +2,9 @@
 
 A simple chess game implemented with solid
 
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+
 ## Attribution
 
 Cubemaps are used from Emil Persson, aka Humus.

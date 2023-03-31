@@ -46,7 +46,7 @@ void Chess::Init()
 
     gameOver = false;
     isWhitesTurn = true;
-    moves = 0;
+    moveQuantity = 0;
 
     chess = new Cell(8, 8);
 
@@ -95,6 +95,8 @@ void Chess::Move(ChessMove move)
     chess->At(move.position.endPos.x, move.position.endPos.y) = type;
 
     isWhitesTurn = !isWhitesTurn;
+
+    moveQuantity++;
 }
 
 bool Chess::CheckBoard(unsigned int x, unsigned int y, unsigned int type)
@@ -404,7 +406,7 @@ String Chess::FEN()
     fen.Append(" 0 ");
 
     // Fullmove number
-    fen.Append(moves);
+    fen.Append(moveQuantity);
 
     return fen;
 }

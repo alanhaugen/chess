@@ -29,7 +29,7 @@ private:
 
     bool gameOver;
     bool isWhitesTurn;
-    int moves;
+    int moveQuantity;
 
     void Move(ChessMove);
     void MakeRandomMove();

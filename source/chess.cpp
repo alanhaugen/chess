@@ -8,6 +8,7 @@ Chess::~Chess()
 {
     delete board;
     delete fpsCamera;
+    delete fps;
     delete camera;
     delete bg;
     delete light;
@@ -195,7 +196,7 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
 
     for (unsigned int i = x-1; i > 0 && stop == false; i--)
     {
-        if (CheckBoard(x-i, y, type))
+        if (CheckBoard(x+i, y, type))
         {
             moves.Add(ChessMove(x, y, x+i, y, type));
         }
@@ -219,7 +220,7 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
 
     for (unsigned int i = y-1; i > 0 && stop == false; i--)
     {
-        if (CheckBoard(x, y-i, type))
+        if (CheckBoard(x, y+i, type))
         {
             moves.Add(ChessMove(x, y, x, y+i, type));
         }

@@ -2,8 +2,7 @@
 
 A simple chess game implemented with solid
 
-![Alt Text](https://www.dropbox.com/s/3ui3wiy7a3l5obt/output.gif)
-
+![Alt Text](https://previews.dropbox.com/p/thumb/AB3ZHZGsiXeAZxwW-Ci77Wpckg4_S7G-d7nUX7HHfKIlIyWSGwMKZK3ozcM86f61FBlpcXeX1AtBxyYFJqRaejHjccnw4v6_y200f5z4AtUYVHhKWfFnqZ84NeNIMm7V_EMgSy9OpzaWIMbWE7yFLdWKckP9MXrOr2KopS06lR8Y09YcdbJ9oKzBRySvXR72oFt7V9LlNOad8TXE2dXRt61pVlGnV3bYBK-cPLy5r33HJWKmyNPb_W9Y_VywU9BVb325p38Uqmhm6yu9LSG114FK_6PH4487GS1JYSmcYMNVpaYs6cE1Rv00BcmBxd5jgH4axhrUxrvNxjtUZFVZ8y28vDIQGpMlaKl4dDDY61I7ig/p.gif)
 
 ## Attribution
 

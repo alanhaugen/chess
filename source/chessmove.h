@@ -48,6 +48,7 @@ private:
 public:
     ChessMove();
     ChessMove(String word);
+    ChessMove(unsigned int type);
     ChessMove(unsigned int x, unsigned int y, unsigned int type);
     ChessMove(String from_, String to_, String type_);
     ChessMove(unsigned int startX, unsigned int startY, unsigned int x, unsigned int y, unsigned int type);

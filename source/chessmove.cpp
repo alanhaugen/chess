@@ -19,6 +19,18 @@ ChessMove::ChessMove(String word)
     algebraicNotation = to;
 }
 
+ChessMove::ChessMove(unsigned int type)
+{
+    position.startPos.x = 0;
+    position.startPos.y = 0;
+
+    from = "";
+    to = "";
+    to = CreateAlgebreicNotation(position.startPos, type);
+    pieceType = to[0];
+    capture = false;
+}
+
 ChessMove::ChessMove(unsigned int x, unsigned int y, unsigned int type)
 {
     position.startPos.x = x;

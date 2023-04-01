@@ -183,9 +183,7 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
     Array<ChessMove> moves;
     ChessMove move(x, y, type);
 
-    bool stop = false;
-
-    for (unsigned int i = x+1; i < chess->width && stop == false; i++)
+    for (unsigned int i = 1;; i++)
     {
         if (CheckMove(move.Move(x+i, y)))
         {
@@ -193,35 +191,23 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
         }
         else
         {
-            stop = true;
+            break;
         }
     }
 
-    for (unsigned int i = x-1; i > 0 && stop == false; i--)
+    for (unsigned int i = 1;; i++)
     {
-        if (CheckMove(move.Move(x+i, y)))
+        if (CheckMove(move.Move(x-i, y)))
         {
             moves.Add(move);
         }
         else
         {
-            stop = true;
+            break;
         }
     }
 
-    for (unsigned int i = y+1; i < chess->height && stop == false; i++)
-    {
-        if (CheckMove(move.Move(x, y+i)))
-        {
-            moves.Add(move);
-        }
-        else
-        {
-            stop = true;
-        }
-    }
-
-    for (unsigned int i = y-1; i > 0 && stop == false; i--)
+    for (unsigned int i = 1;; i++)
     {
         if (CheckMove(move.Move(x, y+i)))
         {
@@ -229,7 +215,19 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
         }
         else
         {
-            stop = true;
+            break;
+        }
+    }
+
+    for (unsigned int i = 1;; i++)
+    {
+        if (CheckMove(move.Move(x, y-i)))
+        {
+            moves.Add(move);
+        }
+        else
+        {
+            break;
         }
     }
 
@@ -239,7 +237,9 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
 Array<ChessMove> Chess::GetQueenMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
-    ChessMove move(x, y, type);
+
+    moves += GetRookMoves(x, y, type);
+    moves += GetBishopMoves(x, y, type);
 
     return moves;
 }
@@ -248,6 +248,54 @@ Array<ChessMove> Chess::GetBishopMoves(unsigned int x, unsigned int y, unsigned 
 {
     Array<ChessMove> moves;
     ChessMove move(x, y, type);
+
+    for (unsigned int i = 1;; i++)
+    {
+        if (CheckMove(move.Move(x+i, y+i)))
+        {
+            moves.Add(move);
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    for (unsigned int i = 1;; i++)
+    {
+        if (CheckMove(move.Move(x-i, y-i)))
+        {
+            moves.Add(move);
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    for (unsigned int i = 1;; i++)
+    {
+        if (CheckMove(move.Move(x+i, y-i)))
+        {
+            moves.Add(move);
+        }
+        else
+        {
+            break;
+        }
+    }
+
+    for (unsigned int i = 1;; i++)
+    {
+        if (CheckMove(move.Move(x-i, y+i)))
+        {
+            moves.Add(move);
+        }
+        else
+        {
+            break;
+        }
+    }
 
     return moves;
 }

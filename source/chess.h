@@ -34,14 +34,16 @@ private:
     void Move(ChessMove);
     void MakeRandomMove();
     Array<ChessMove> GetMoves();
+    String FEN();
+
     bool CheckMove(ChessMove move);
+
     Array<ChessMove> GetKingMoves(unsigned int x, unsigned int y, unsigned int type);
     Array<ChessMove> GetPawnMoves(unsigned int x, unsigned int y, unsigned int type);
     Array<ChessMove> GetKnightMoves(unsigned int x, unsigned int y, unsigned int type);
     Array<ChessMove> GetQueenMoves(unsigned int x, unsigned int y, unsigned int type);
     Array<ChessMove> GetBishopMoves(unsigned int x, unsigned int y, unsigned int type);
     Array<ChessMove> GetRookMoves(unsigned int x, unsigned int y, unsigned int type);
-    String FEN();
 
 public:
     Chess();

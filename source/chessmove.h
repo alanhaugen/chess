@@ -35,7 +35,6 @@ private:
         Pos endPos;
     };
 
-    bool capture;
     String from;
     String to;
 
@@ -55,6 +54,8 @@ public:
 
     String algebraicNotation;
     Move position;
+    unsigned int type;
+    bool capture;
 
     ChessMove Move(unsigned int x, unsigned int y);
 

@@ -6,6 +6,7 @@ ChessMove::ChessMove()
     to = "";
     pieceType = "";
     capture = false;
+    type = 0;
 }
 
 ChessMove::ChessMove(String word)
@@ -166,9 +167,10 @@ String ChessMove::CreateAlgebreicNotation(Pos position, String type)
     return code;
 }
 
-String ChessMove::CreateAlgebreicNotation(Pos position, unsigned int type)
+String ChessMove::CreateAlgebreicNotation(Pos position, unsigned int type_)
 {
     String code;
+    type = type_;
 
     switch(type)
     {

@@ -108,6 +108,17 @@ bool Chess::CheckMove(ChessMove move)
     {
         return true;
     }
+    else if ((move.type >= pawn &&
+              (chess->At(move.position.endPos.x, move.position.endPos.y) <= KING &&
+               chess->At(move.position.endPos.x, move.position.endPos.y) >= PAWN)) ||
+             (move.type < pawn &&
+              (chess->At(move.position.endPos.x, move.position.endPos.y) >= pawn &&
+               chess->At(move.position.endPos.x, move.position.endPos.y) <= king)))
+    {
+        move.capture = true;
+
+        return true;
+    }
 
     return false;
 }

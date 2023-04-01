@@ -26,7 +26,7 @@ class ChessMove : public Command
 private:
     struct Pos
     {
-        int x, y;
+        unsigned int x, y;
     };
 
     struct Move
@@ -42,20 +42,20 @@ private:
     String pieceType;
 
     String CreateAlgebreicNotation(Pos position, String type);
-    String CreateAlgebreicNotation(Pos position, int type);
+    String CreateAlgebreicNotation(Pos position, unsigned int type);
     Pos CreatePosition(String word);
 
 public:
     ChessMove();
     ChessMove(String word);
-    ChessMove(int x, int y, int type);
+    ChessMove(unsigned int x, unsigned int y, unsigned int type);
     ChessMove(String from_, String to_, String type_);
-    ChessMove(int startX, int startY, int x, int y, int type);
+    ChessMove(unsigned int startX, unsigned int startY, unsigned int x, unsigned int y, unsigned int type);
 
     String algebraicNotation;
     Move position;
 
-    ChessMove Move(int x, int y);
+    ChessMove Move(unsigned int x, unsigned int y);
 
     void Execute();
     void Undo();

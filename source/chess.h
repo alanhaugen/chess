@@ -2,7 +2,7 @@
 #define CHESS_H
 
 #include <core/application.h>
-#include "core/components/cell.h"
+#include <core/components/cell.h>
 #include <core/components/camera.h>
 #include <core/components/fpscamera.h>
 #include <core/components/fpscounter.h>

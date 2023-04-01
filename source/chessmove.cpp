@@ -19,7 +19,7 @@ ChessMove::ChessMove(String word)
     algebraicNotation = to;
 }
 
-ChessMove::ChessMove(int x, int y, int type)
+ChessMove::ChessMove(unsigned int x, unsigned int y, unsigned int type)
 {
     position.startPos.x = x;
     position.startPos.y = y;
@@ -31,7 +31,7 @@ ChessMove::ChessMove(int x, int y, int type)
     algebraicNotation = to;
 }
 
-ChessMove::ChessMove(int startX, int startY, int x, int y, int type)
+ChessMove::ChessMove(unsigned int startX, unsigned int startY, unsigned int x, unsigned int y, unsigned int type)
 {
     position.startPos.x = startX;
     position.startPos.y = startY;
@@ -45,7 +45,7 @@ ChessMove::ChessMove(int startX, int startY, int x, int y, int type)
     capture = false;
 }
 
-ChessMove ChessMove::Move(int x, int y)
+ChessMove ChessMove::Move(unsigned int x, unsigned int y)
 {
     position.endPos.x = x;
     position.endPos.y = y;
@@ -154,7 +154,7 @@ String ChessMove::CreateAlgebreicNotation(Pos position, String type)
     return code;
 }
 
-String ChessMove::CreateAlgebreicNotation(Pos position, int type)
+String ChessMove::CreateAlgebreicNotation(Pos position, unsigned int type)
 {
     String code;
 
@@ -205,8 +205,8 @@ String ChessMove::CreateAlgebreicNotation(Pos position, int type)
 
 ChessMove::Pos ChessMove::CreatePosition(String word)
 {
-    int positionHorizontal = word[1];
-    int positionVertical   = word[2];
+    unsigned int positionHorizontal = word[1];
+    unsigned int positionVertical   = word[2];
 
     // Convert char to number
     positionVertical = positionVertical - '0';

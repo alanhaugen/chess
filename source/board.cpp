@@ -231,8 +231,8 @@ void MovePiece(Actor *piece, String word)
 
     float xpos, ypos;
 
-    xpos = (move.position.startPos.x - 1) * 3;
-    ypos = (move.position.startPos.y * 3) - 6;
+    xpos = (int(move.position.startPos.x) - 1) * 3;
+    ypos = (int(move.position.startPos.y) * 3) - 6;
 
     // Put piece in position based on fen
     piece->matrix.matrix[3] = glm::vec4(xpos, 0.0f, ypos, 1.0f);

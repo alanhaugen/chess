@@ -380,9 +380,9 @@ String Chess::FEN()
     {
         for (unsigned int j = 0; j < chess->height; j++)
         {
-            int piece = chess->At(i, j);
+            unsigned int piece = chess->At(i, j);
 
-            if (piece != -1)
+            if (piece != Cell::EMPTY)
             {
                 ChessMove move(i, j, piece);
                 String code = move.algebraicNotation;

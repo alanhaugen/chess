@@ -6,6 +6,8 @@ Chess::Chess()
 
 Chess::~Chess()
 {
+    myfile.close();
+
     delete board;
     delete fpsCamera;
     delete fps;
@@ -17,6 +19,8 @@ Chess::~Chess()
 
 void Chess::Init()
 {
+    myfile.open ("game.fen");
+
     camera    = new Camera(glm::vec3(-9.683014, 16.498363, 7.318779), glm::vec3(0.0, 1.0, 0.0), 2, -41, 0);
     fpsCamera = new FPSCamera(camera);
     fps       = new FPSCounter();
@@ -99,7 +103,34 @@ void Chess::Move(ChessMove move)
     chess->At(move.position.startPos.x, move.position.startPos.y) = Cell::EMPTY;
     chess->At(move.position.endPos.x, move.position.endPos.y) = type1;
 
+    if (check)
+    {
+        GetMoves();
+
+        if (check)
+        {
+            // Move back, still in check...
+            chess->At(move.position.startPos.x, move.position.startPos.y) = type1;
+            chess->At(move.position.endPos.x, move.position.endPos.y) = type2;
+
+            return;
+        }
+    }
+
     isWhitesTurn = !isWhitesTurn;
+
+    GetMoves();
+
+    if (check)
+    {
+        // Move back, putting yourself in check is illegal
+        chess->At(move.position.startPos.x, move.position.startPos.y) = type1;
+        chess->At(move.position.endPos.x, move.position.endPos.y) = type2;
+
+        isWhitesTurn = !isWhitesTurn;
+
+        return;
+    }
 
     moveQuantity++;
 }
@@ -578,11 +609,15 @@ void Chess::Update()
     printf("camera position: '%f %f %f\n", camera->position.x, camera->position.y, camera->position.z);
 #endif
 
-    if (int(timer->TimeSinceStarted()) > 1000)
+    /*if (int(timer->TimeSinceStarted()) > 1000)
     {
         MakeRandomMove();
         timer->Reset();
-    }
+    }*/
+
+    myfile << FEN().ToChar() << std::endl;
+
+    MakeRandomMove();
 
     if (input.Mouse.Released)
     {

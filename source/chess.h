@@ -11,9 +11,13 @@
 #include "chessmove.h"
 #include "board.h"
 
+#include <fstream>
+
 class Chess : public IScene
 {
 private:
+    std::ofstream myfile;
+
     Camera *camera;
     FPSCamera *fpsCamera;
     FPSCounter *fps;

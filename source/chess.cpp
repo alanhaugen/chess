@@ -86,6 +86,8 @@ void Chess::Init()
     chess->At(5, 6) = pawn;
     chess->At(6, 6) = pawn;
     chess->At(7, 6) = pawn;
+
+    board->Position(FEN());
 }
 
 void Chess::Move(ChessMove move)

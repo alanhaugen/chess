@@ -183,52 +183,24 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
     Array<ChessMove> moves;
     ChessMove move(x, y, type);
 
-    for (unsigned int i = 1;; i++)
+    for (unsigned int i = 1; CheckMove(move.Move(x+i, y)); i++)
     {
-        if (CheckMove(move.Move(x+i, y)))
-        {
-            moves.Add(move);
-        }
-        else
-        {
-            break;
-        }
+        moves.Add(move);
     }
 
-    for (unsigned int i = 1;; i++)
+    for (unsigned int i = 1; CheckMove(move.Move(x-i, y)); i++)
     {
-        if (CheckMove(move.Move(x-i, y)))
-        {
-            moves.Add(move);
-        }
-        else
-        {
-            break;
-        }
+        moves.Add(move);
     }
 
-    for (unsigned int i = 1;; i++)
+    for (unsigned int i = 1; CheckMove(move.Move(x, y+i)); i++)
     {
-        if (CheckMove(move.Move(x, y+i)))
-        {
-            moves.Add(move);
-        }
-        else
-        {
-            break;
-        }
+        moves.Add(move);
     }
 
-    for (unsigned int i = 1;; i++)
+    for (unsigned int i = 1; CheckMove(move.Move(x, y-i)); i++)
     {
-        if (CheckMove(move.Move(x, y-i)))
-        {
-            moves.Add(move);
-        }
-        else
-        {
-            break;
-        }
+        moves.Add(move);
     }
 
     return moves;
@@ -249,52 +221,24 @@ Array<ChessMove> Chess::GetBishopMoves(unsigned int x, unsigned int y, unsigned 
     Array<ChessMove> moves;
     ChessMove move(x, y, type);
 
-    for (unsigned int i = 1;; i++)
+    for (unsigned int i = 1; CheckMove(move.Move(x+i, y+i)); i++)
     {
-        if (CheckMove(move.Move(x+i, y+i)))
-        {
-            moves.Add(move);
-        }
-        else
-        {
-            break;
-        }
+        moves.Add(move);
     }
 
-    for (unsigned int i = 1;; i++)
+    for (unsigned int i = 1; CheckMove(move.Move(x-i, y-i)); i++)
     {
-        if (CheckMove(move.Move(x-i, y-i)))
-        {
-            moves.Add(move);
-        }
-        else
-        {
-            break;
-        }
+        moves.Add(move);
     }
 
-    for (unsigned int i = 1;; i++)
+    for (unsigned int i = 1; CheckMove(move.Move(x+i, y-i)); i++)
     {
-        if (CheckMove(move.Move(x+i, y-i)))
-        {
-            moves.Add(move);
-        }
-        else
-        {
-            break;
-        }
+        moves.Add(move);
     }
 
-    for (unsigned int i = 1;; i++)
+    for (unsigned int i = 1; CheckMove(move.Move(x-i, y+i)); i++)
     {
-        if (CheckMove(move.Move(x-i, y+i)))
-        {
-            moves.Add(move);
-        }
-        else
-        {
-            break;
-        }
+        moves.Add(move);
     }
 
     return moves;

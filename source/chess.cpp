@@ -45,6 +45,7 @@ void Chess::Init()
     activePiece = NULL;
     timer = Application::GetTime();
 
+    check = false;
     gameOver = false;
     isWhitesTurn = true;
     moveQuantity = 0;
@@ -92,10 +93,11 @@ void Chess::Init()
 
 void Chess::Move(ChessMove move)
 {
-    unsigned int type = chess->At(move.position.startPos.x, move.position.startPos.y);
+    unsigned int type1 = chess->At(move.position.startPos.x, move.position.startPos.y);
+    unsigned int type2 = chess->At(move.position.endPos.x, move.position.endPos.y);
 
     chess->At(move.position.startPos.x, move.position.startPos.y) = Cell::EMPTY;
-    chess->At(move.position.endPos.x, move.position.endPos.y) = type;
+    chess->At(move.position.endPos.x, move.position.endPos.y) = type1;
 
     isWhitesTurn = !isWhitesTurn;
 
@@ -109,17 +111,26 @@ bool Chess::CheckMove(ChessMove &move)
         return true;
     }
     else if ((move.type >= pawn &&
-              (chess->At(move.position.endPos.x, move.position.endPos.y) <= KING &&
-               chess->At(move.position.endPos.x, move.position.endPos.y) >= PAWN)) ||
+              (chess->At(move.position.endPos.x, move.position.endPos.y) <= KING)) ||
              (move.type < pawn &&
               (chess->At(move.position.endPos.x, move.position.endPos.y) >= pawn &&
                chess->At(move.position.endPos.x, move.position.endPos.y) <= king)))
     {
         if (move.type == pawn || move.type == PAWN)
         {
-            return false;
+            if (move.position.startPos.x == move.position.endPos.x)
+            {
+                return false;
+            }
         }
+
         move.capture = true;
+
+        if (chess->At(move.position.endPos.x, move.position.endPos.y)== KING ||
+            chess->At(move.position.endPos.x, move.position.endPos.y) == king)
+        {
+            check = true;
+        }
 
         return true;
     }
@@ -389,6 +400,7 @@ Array<ChessMove> Chess::GetKnightMoves(unsigned int x, unsigned int y, unsigned 
 Array<ChessMove> Chess::GetMoves()
 {
     Array<ChessMove> moves;
+    check = false;
 
     for (unsigned int x = 0; x < chess->width; x++)
     {
@@ -568,8 +580,8 @@ void Chess::Update()
 
     if (int(timer->TimeSinceStarted()) > 1000)
     {
-      MakeRandomMove();
-      timer->Reset();
+        MakeRandomMove();
+        timer->Reset();
     }
 
     if (input.Mouse.Released)

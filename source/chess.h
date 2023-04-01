@@ -27,6 +27,7 @@ private:
     Actor *activePiece;
     ITime *timer;
 
+    bool check;
     bool gameOver;
     bool isWhitesTurn;
     int moveQuantity;

@@ -45,6 +45,14 @@ ChessMove::ChessMove(int startX, int startY, int x, int y, int type)
     capture = false;
 }
 
+ChessMove ChessMove::Move(int x, int y)
+{
+    position.endPos.x = x;
+    position.endPos.y = y;
+
+    return *this;
+}
+
 ChessMove::ChessMove(String from_, String to_, String type_ = "")
 {
     from = from_;

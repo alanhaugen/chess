@@ -55,6 +55,8 @@ public:
     String algebraicNotation;
     Move position;
 
+    ChessMove Move(int x, int y);
+
     void Execute();
     void Undo();
     void Redo();

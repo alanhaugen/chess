@@ -34,7 +34,7 @@ private:
     void Move(ChessMove);
     void MakeRandomMove();
     Array<ChessMove> GetMoves();
-    bool CheckBoard(unsigned int x, unsigned int y, unsigned int type);
+    bool CheckMove(ChessMove move);
     Array<ChessMove> GetKingMoves(unsigned int x, unsigned int y, unsigned int type);
     Array<ChessMove> GetPawnMoves(unsigned int x, unsigned int y, unsigned int type);
     Array<ChessMove> GetKnightMoves(unsigned int x, unsigned int y, unsigned int type);

@@ -90,7 +90,7 @@ void Chess::Init()
 
 void Chess::Move(ChessMove move)
 {
-    int type = chess->At(move.position.startPos.x, move.position.startPos.y);
+    unsigned int type = chess->At(move.position.startPos.x, move.position.startPos.y);
 
     chess->At(move.position.startPos.x, move.position.startPos.y) = Cell::EMPTY;
     chess->At(move.position.endPos.x, move.position.endPos.y) = type;
@@ -100,9 +100,9 @@ void Chess::Move(ChessMove move)
     moveQuantity++;
 }
 
-bool Chess::CheckBoard(unsigned int x, unsigned int y, unsigned int type)
+bool Chess::CheckMove(ChessMove move)
 {
-    if (chess->At(x, y) == Cell::EMPTY)
+    if (chess->At(move.position.endPos.x, move.position.endPos.y) == Cell::EMPTY)
     {
         return true;
     }
@@ -113,38 +113,39 @@ bool Chess::CheckBoard(unsigned int x, unsigned int y, unsigned int type)
 Array<ChessMove> Chess::GetKingMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
+    ChessMove move(x, y, type);
 
-    if (CheckBoard(x+1, y, type))
+    if (CheckMove(move.Move(x+1, y)))
     {
-        moves.Add(ChessMove(x, y, x+1, y, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x-1, y, type))
+    if (CheckMove(move.Move(x-1, y)))
     {
-        moves.Add(ChessMove(x, y, x-1, y, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x, y+1, type))
+    if (CheckMove(move.Move(x, y+1)))
     {
-        moves.Add(ChessMove(x, y, x, y+1, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x, y-1, type))
+    if (CheckMove(move.Move(x, y-1)))
     {
-        moves.Add(ChessMove(x, y, x, y-1, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x+1, y+1, type))
+    if (CheckMove(move.Move(x+1, y+1)))
     {
-        moves.Add(ChessMove(x, y, x+1, y+1, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x-1, y+1, type))
+    if (CheckMove(move.Move(x-1, y+1)))
     {
-        moves.Add(ChessMove(x, y, x-1, y+1, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x+1, y-1, type))
+    if (CheckMove(move.Move(x+1, y-1)))
     {
-        moves.Add(ChessMove(x, y, x+1, y-1, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x-1, y-1, type))
+    if (CheckMove(move.Move(x-1, y-1)))
     {
-        moves.Add(ChessMove(x, y, x-1, y-1, type));
+        moves.Add(move);
     }
 
     return moves;
@@ -153,19 +154,20 @@ Array<ChessMove> Chess::GetKingMoves(unsigned int x, unsigned int y, unsigned in
 Array<ChessMove> Chess::GetPawnMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
+    ChessMove move(x, y, type);
 
     if (type == PAWN)
     {
-        if (CheckBoard(x, y+1, type))
+        if (CheckMove(move.Move(x, y+1)))
         {
-            moves.Add(ChessMove(x, y, x, y+1, type));
+            moves.Add(move);
         }
     }
     else if (type == pawn)
     {
-        if (CheckBoard(x, y-1, type))
+        if (CheckMove(move.Move(x, y-1)))
         {
-            moves.Add(ChessMove(x, y, x, y-1, type));
+            moves.Add(move);
         }
     }
     else
@@ -179,14 +181,15 @@ Array<ChessMove> Chess::GetPawnMoves(unsigned int x, unsigned int y, unsigned in
 Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
+    ChessMove move(x, y, type);
 
     bool stop = false;
 
     for (unsigned int i = x+1; i < chess->width && stop == false; i++)
     {
-        if (CheckBoard(x+i, y, type))
+        if (CheckMove(move.Move(x+i, y)))
         {
-            moves.Add(ChessMove(x, y, x+i, y, type));
+            moves.Add(move);
         }
         else
         {
@@ -196,9 +199,9 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
 
     for (unsigned int i = x-1; i > 0 && stop == false; i--)
     {
-        if (CheckBoard(x+i, y, type))
+        if (CheckMove(move.Move(x+i, y)))
         {
-            moves.Add(ChessMove(x, y, x+i, y, type));
+            moves.Add(move);
         }
         else
         {
@@ -208,9 +211,9 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
 
     for (unsigned int i = y+1; i < chess->height && stop == false; i++)
     {
-        if (CheckBoard(x, y+i, type))
+        if (CheckMove(move.Move(x, y+i)))
         {
-            moves.Add(ChessMove(x, y, x, y+i, type));
+            moves.Add(move);
         }
         else
         {
@@ -220,9 +223,9 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
 
     for (unsigned int i = y-1; i > 0 && stop == false; i--)
     {
-        if (CheckBoard(x, y+i, type))
+        if (CheckMove(move.Move(x, y+i)))
         {
-            moves.Add(ChessMove(x, y, x, y+i, type));
+            moves.Add(move);
         }
         else
         {
@@ -236,6 +239,7 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
 Array<ChessMove> Chess::GetQueenMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
+    ChessMove move(x, y, type);
 
     return moves;
 }
@@ -243,6 +247,7 @@ Array<ChessMove> Chess::GetQueenMoves(unsigned int x, unsigned int y, unsigned i
 Array<ChessMove> Chess::GetBishopMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
+    ChessMove move(x, y, type);
 
     return moves;
 }
@@ -250,38 +255,39 @@ Array<ChessMove> Chess::GetBishopMoves(unsigned int x, unsigned int y, unsigned 
 Array<ChessMove> Chess::GetKnightMoves(unsigned int x, unsigned int y, unsigned int type)
 {
     Array<ChessMove> moves;
+    ChessMove move(x, y, type);
 
-    if (CheckBoard(x+1, y+2, type))
+    if (CheckMove(move.Move(x+1, y+2)))
     {
-        moves.Add(ChessMove(x, y, x+1, y+2, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x-1, y+2, type))
+    if (CheckMove(move.Move(x-1, y+2)))
     {
-        moves.Add(ChessMove(x, y, x-1, y+2, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x+2, y+1, type))
+    if (CheckMove(move.Move(x+2, y+1)))
     {
-        moves.Add(ChessMove(x, y, x+2, y+1, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x-2, y+1, type))
+    if (CheckMove(move.Move(x-2, y+1)))
     {
-        moves.Add(ChessMove(x, y, x-2, y+1, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x+2, y-1, type))
+    if (CheckMove(move.Move(x+2, y-1)))
     {
-        moves.Add(ChessMove(x, y, x+2, y-1, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x-2, y-1, type))
+    if (CheckMove(move.Move(x-2, y-1)))
     {
-        moves.Add(ChessMove(x, y, x-2, y-1, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x+1, y-2, type))
+    if (CheckMove(move.Move(x+1, y-2)))
     {
-        moves.Add(ChessMove(x, y, x+1, y-2, type));
+        moves.Add(move);
     }
-    if (CheckBoard(x-1, y-2, type))
+    if (CheckMove(move.Move(x-1, y-2)))
     {
-        moves.Add(ChessMove(x, y, x-1, y-2, type));
+        moves.Add(move);
     }
 
     return moves;

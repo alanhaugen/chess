@@ -102,7 +102,7 @@ void Chess::Move(ChessMove move)
     moveQuantity++;
 }
 
-bool Chess::CheckMove(ChessMove move)
+bool Chess::CheckMove(ChessMove &move)
 {
     if (chess->At(move.position.endPos.x, move.position.endPos.y) == Cell::EMPTY)
     {
@@ -115,6 +115,10 @@ bool Chess::CheckMove(ChessMove move)
               (chess->At(move.position.endPos.x, move.position.endPos.y) >= pawn &&
                chess->At(move.position.endPos.x, move.position.endPos.y) <= king)))
     {
+        if (move.type == pawn || move.type == PAWN)
+        {
+            return false;
+        }
         move.capture = true;
 
         return true;
@@ -174,6 +178,28 @@ Array<ChessMove> Chess::GetPawnMoves(unsigned int x, unsigned int y, unsigned in
         if (CheckMove(move.Move(x, y+1)))
         {
             moves.Add(move);
+
+            if (y == 1)
+            {
+                if (CheckMove(move.Move(x, y+2)))
+                {
+                    moves.Add(move);
+                }
+            }
+        }
+        if (CheckMove(move.Move(x+1, y+1)))
+        {
+            if (move.capture == true)
+            {
+                moves.Add(move);
+            }
+        }
+        if (CheckMove(move.Move(x-1, y+1)))
+        {
+            if (move.capture == true)
+            {
+                moves.Add(move);
+            }
         }
     }
     else if (type == pawn)
@@ -181,6 +207,28 @@ Array<ChessMove> Chess::GetPawnMoves(unsigned int x, unsigned int y, unsigned in
         if (CheckMove(move.Move(x, y-1)))
         {
             moves.Add(move);
+
+            if (y == 6)
+            {
+                if (CheckMove(move.Move(x, y-2)))
+                {
+                    moves.Add(move);
+                }
+            }
+        }
+        if (CheckMove(move.Move(x+1, y-1)))
+        {
+            if (move.capture == true)
+            {
+                moves.Add(move);
+            }
+        }
+        if (CheckMove(move.Move(x-1, y-1)))
+        {
+            if (move.capture == true)
+            {
+                moves.Add(move);
+            }
         }
     }
     else
@@ -199,21 +247,41 @@ Array<ChessMove> Chess::GetRookMoves(unsigned int x, unsigned int y, unsigned in
     for (unsigned int i = 1; CheckMove(move.Move(x+i, y)); i++)
     {
         moves.Add(move);
+
+        if (move.capture)
+        {
+            break;
+        }
     }
 
     for (unsigned int i = 1; CheckMove(move.Move(x-i, y)); i++)
     {
         moves.Add(move);
+
+        if (move.capture)
+        {
+            break;
+        }
     }
 
     for (unsigned int i = 1; CheckMove(move.Move(x, y+i)); i++)
     {
         moves.Add(move);
+
+        if (move.capture)
+        {
+            break;
+        }
     }
 
     for (unsigned int i = 1; CheckMove(move.Move(x, y-i)); i++)
     {
         moves.Add(move);
+
+        if (move.capture)
+        {
+            break;
+        }
     }
 
     return moves;
@@ -237,21 +305,41 @@ Array<ChessMove> Chess::GetBishopMoves(unsigned int x, unsigned int y, unsigned 
     for (unsigned int i = 1; CheckMove(move.Move(x+i, y+i)); i++)
     {
         moves.Add(move);
+
+        if (move.capture)
+        {
+            break;
+        }
     }
 
     for (unsigned int i = 1; CheckMove(move.Move(x-i, y-i)); i++)
     {
         moves.Add(move);
+
+        if (move.capture)
+        {
+            break;
+        }
     }
 
     for (unsigned int i = 1; CheckMove(move.Move(x+i, y-i)); i++)
     {
         moves.Add(move);
+
+        if (move.capture)
+        {
+            break;
+        }
     }
 
     for (unsigned int i = 1; CheckMove(move.Move(x-i, y+i)); i++)
     {
         moves.Add(move);
+
+        if (move.capture)
+        {
+            break;
+        }
     }
 
     return moves;
@@ -480,8 +568,8 @@ void Chess::Update()
 
     if (int(timer->TimeSinceStarted()) > 1000)
     {
-        MakeRandomMove();
-        timer->Reset();
+      MakeRandomMove();
+      timer->Reset();
     }
 
     if (input.Mouse.Released)

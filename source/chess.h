@@ -36,7 +36,7 @@ private:
     Array<ChessMove> GetMoves();
     String FEN();
 
-    bool CheckMove(ChessMove move);
+    bool CheckMove(ChessMove &move);
 
     Array<ChessMove> GetKingMoves(unsigned int x, unsigned int y, unsigned int type);
     Array<ChessMove> GetPawnMoves(unsigned int x, unsigned int y, unsigned int type);

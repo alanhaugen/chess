@@ -58,7 +58,7 @@ ChessMove::ChessMove(unsigned int startX, unsigned int startY, unsigned int x, u
     capture = false;
 }
 
-ChessMove ChessMove::Move(unsigned int x, unsigned int y)
+ChessMove &ChessMove::Move(unsigned int x, unsigned int y)
 {
     position.endPos.x = x;
     position.endPos.y = y;

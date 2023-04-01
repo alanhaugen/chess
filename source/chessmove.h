@@ -57,7 +57,7 @@ public:
     unsigned int type;
     bool capture;
 
-    ChessMove Move(unsigned int x, unsigned int y);
+    ChessMove &Move(unsigned int x, unsigned int y);
 
     void Execute();
     void Undo();

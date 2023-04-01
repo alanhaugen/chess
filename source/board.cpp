@@ -281,6 +281,16 @@ void Board::Position(String fen)
 {
     Array<String> words = fen.ToWords();
 
+    for (unsigned int j = 0; j < components.Size(); j++)
+    {
+        Actor *piece = dynamic_cast<Actor*>(components[j]);
+
+        if (piece->tag.Empty() == false)
+        {
+            piece->matrix.matrix[3] = glm::vec4(-100.0f, 0.0f, -100.0f, 1.0f); // hack to remove defeated pieces
+        }
+    }
+
     // Search fen for piece position and state information
     for (unsigned int i = 0; i < words.Size(); i++)
     {

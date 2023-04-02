@@ -139,16 +139,19 @@ void Chess::Move(ChessMove move)
 
 bool Chess::CheckMove(ChessMove &move)
 {
+    // Moving to an empty space is always legal
     if (chess->At(move.position.endPos.x, move.position.endPos.y) == Cell::EMPTY)
     {
         return true;
     }
+    // Moving to an enemy space is legal for all pieces except for pawn
     else if ((move.type >= pawn &&
               (chess->At(move.position.endPos.x, move.position.endPos.y) <= KING)) ||
              (move.type < pawn &&
               (chess->At(move.position.endPos.x, move.position.endPos.y) >= pawn &&
                chess->At(move.position.endPos.x, move.position.endPos.y) <= king)))
     {
+        // Pawn is a special case as they can't attack moving forwards
         if (move.type == pawn || move.type == PAWN)
         {
             if (move.position.startPos.x == move.position.endPos.x)
@@ -159,6 +162,7 @@ bool Chess::CheckMove(ChessMove &move)
 
         move.capture = true;
 
+        // If this move kills the king, the king is in check
         if (chess->At(move.position.endPos.x, move.position.endPos.y)== KING ||
             chess->At(move.position.endPos.x, move.position.endPos.y) == king)
         {
@@ -217,7 +221,7 @@ Array<ChessMove> Chess::GetPawnMoves(unsigned int x, unsigned int y, unsigned in
     Array<ChessMove> moves;
     ChessMove move(x, y, type);
 
-    if (type == PAWN)
+    if (type == PAWN) // white pawn
     {
         if (CheckMove(move.Move(x, y+1)))
         {
@@ -246,7 +250,7 @@ Array<ChessMove> Chess::GetPawnMoves(unsigned int x, unsigned int y, unsigned in
             }
         }
     }
-    else if (type == pawn)
+    else if (type == pawn) // black pawn
     {
         if (CheckMove(move.Move(x, y-1)))
         {

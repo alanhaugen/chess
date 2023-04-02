@@ -16,8 +16,6 @@
 class Chess : public IScene
 {
 private:
-    std::ofstream myfile;
-
     Camera *camera;
     FPSCamera *fpsCamera;
     FPSCounter *fps;
@@ -35,6 +33,10 @@ private:
     bool gameOver;
     bool isWhitesTurn;
     int moveQuantity;
+
+    bool playing;
+    Array<String> fens;
+    int fenPosition;
 
     void Move(ChessMove);
     void MakeRandomMove();

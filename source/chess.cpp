@@ -6,8 +6,6 @@ Chess::Chess()
 
 Chess::~Chess()
 {
-    myfile.close();
-
     delete board;
     delete fpsCamera;
     delete fps;
@@ -19,8 +17,6 @@ Chess::~Chess()
 
 void Chess::Init()
 {
-    myfile.open ("game.fen");
-
     camera    = new Camera(glm::vec3(-9.683014, 16.498363, 7.318779), glm::vec3(0.0, 1.0, 0.0), 2, -41, 0);
     fpsCamera = new FPSCamera(camera);
     fps       = new FPSCounter();
@@ -53,6 +49,9 @@ void Chess::Init()
     gameOver = false;
     isWhitesTurn = true;
     moveQuantity = 0;
+
+    playing = true;
+    fenPosition = 0;
 
     chess = new Cell(8, 8);
 
@@ -615,9 +614,38 @@ void Chess::Update()
         timer->Reset();
     }*/
 
-    myfile << FEN().ToChar() << std::endl;
+    if (playing)
+    {
+        fens.Add(FEN());
 
-    MakeRandomMove();
+        MakeRandomMove();
+    }
+    else
+    {
+        if (input.Pressed(input.Key.LEFT))
+        {
+            if (fenPosition > 0)
+            {
+                fenPosition--;
+            }
+        }
+        if (input.Pressed(input.Key.RIGHT))
+        {
+            if (fenPosition < int(fens.Size() - 1))
+            {
+                fenPosition++;
+            }
+        }
+
+        board->Position(fens[fenPosition]);
+    }
+
+    if (input.Released(input.Key.SPACE))
+    {
+        playing = !playing;
+
+        fenPosition = int(fens.Size() - 1);
+    }
 
     if (input.Mouse.Released)
     {

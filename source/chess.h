@@ -3,6 +3,7 @@
 
 #include <core/application.h>
 #include <core/components/cell.h>
+#include <core/components/sprite.h>
 #include <core/components/camera.h>
 #include <core/components/fpscamera.h>
 #include <core/components/fpscounter.h>
@@ -17,6 +18,7 @@ class Chess : public IScene
 {
 private:
     Camera *camera;
+    Sprite *pointer;
     FPSCamera *fpsCamera;
     FPSCounter *fps;
     Board *board;

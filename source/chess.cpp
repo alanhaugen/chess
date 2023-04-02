@@ -12,12 +12,14 @@ Chess::~Chess()
     delete camera;
     delete bg;
     delete light;
+    delete pointer;
     delete chess;
 }
 
 void Chess::Init()
 {
     camera    = new Camera(glm::vec3(-9.683014, 16.498363, 7.318779), glm::vec3(0.0, 1.0, 0.0), 2, -41, 0);
+    pointer   = new Sprite("data/cursor_white.png");
     fpsCamera = new FPSCamera(camera);
     fps       = new FPSCounter();
     bg        = new Background(
@@ -35,6 +37,7 @@ void Chess::Init()
     fpsCamera->UpdateCamera();
 
     components.Add(camera);
+    components.Add(pointer);
     //components.Add(fpsCamera);
     components.Add(fps);
     components.Add(bg);
@@ -639,6 +642,11 @@ void Chess::Update()
         timer->Reset();
     }*/
 
+    // Update mouse cursor graphics position
+    pointer->x = input.Mouse.x;
+    pointer->y = input.Mouse.y;
+
+    // Update chess game moves
     if (playing)
     {
         fens.Add(FEN());
@@ -720,7 +728,6 @@ void Chess::Update()
 
                 if (physics->Intersect(cameraRay, piece->hitbox))
                 {
-                    Log(piece->tag);
                     activePiece = piece;
                     activePiece->Uniform("colour", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
                     dragging = true;

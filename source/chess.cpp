@@ -572,6 +572,31 @@ void Chess::MakeRandomMove()
     board->Position(FEN());
 }
 
+bool Chess::MakeFirstCapture()
+{
+    // Chess gives us all the possible moves in an array
+    // [ move1, move2, move3 ... ]
+    Array<ChessMove> possibleMoves = GetMoves();
+
+    // Exit if the game is over
+    if (gameOver == true) return false;
+
+    // Chooses the first capture in the list
+    for (unsigned int i = 0; i < possibleMoves.Size(); i++)
+    {
+        if (possibleMoves[i].capture)
+        {
+            Move(possibleMoves[i]);
+
+            // Changes board visual state
+            board->Position(FEN());
+
+            return true;
+        }
+    }
+
+    return false;
+}
 
 void Chess::Update()
 {
@@ -618,7 +643,10 @@ void Chess::Update()
     {
         fens.Add(FEN());
 
-        MakeRandomMove();
+        if (MakeFirstCapture() == false)
+        {
+            MakeRandomMove();
+        }
     }
     else
     {

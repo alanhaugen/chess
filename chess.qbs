@@ -5,10 +5,10 @@ solid {
         name: "Chess"
 
         files: [
-            "../../Huldra Dropbox/Chess/data/cubemap.frag",
-            "../../Huldra Dropbox/Chess/data/cubemap.vert",
-            "../../Huldra Dropbox/Chess/data/gouraud.frag",
-            "../../Huldra Dropbox/Chess/data/gouraud.vert",
+            "data/cubemap.frag",
+            "data/cubemap.vert",
+            "data/gouraud.frag",
+            "data/gouraud.vert",
             "data/app.rc",
             "data/app.res",
             "data/blender/bishop.blend",
@@ -28,6 +28,8 @@ solid {
             "data/blender/rook.blend1",
             "data/blender/shogi.blend",
             "data/blender/shogi.blend1",
+            "data/gui.frag",
+            "data/gui.vert",
             "data/icon.png",
             "data/icon_1024x1024.png",
             "data/icon_128x128.png",

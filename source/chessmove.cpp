@@ -130,8 +130,8 @@ String ChessMove::CreateAlgebreicNotation(Pos position, String type)
     case 7:
         code.Append("h");
         break;
-    default:
-        LogWarning("Unknown horizontal position of chess piece detected");
+    //default:
+    //    LogWarning("Unknown horizontal position of chess piece detected");
     }
 
     switch(position.y)
@@ -160,8 +160,8 @@ String ChessMove::CreateAlgebreicNotation(Pos position, String type)
     case 7:
         code.Append("8");
         break;
-    default:
-        LogWarning("Unknown vertical position of chess piece detected");
+    //default:
+    //    LogWarning("Unknown vertical position of chess piece detected");
     }
 
     return code;
@@ -210,8 +210,8 @@ String ChessMove::CreateAlgebreicNotation(Pos position, unsigned int type_)
     case knight:
         code.Append("n");
         break;
-    default:
-        LogWarning("Unknown chess piece detected");
+    //default:
+    //    LogWarning("Unknown chess piece detected");
     }
 
     return CreateAlgebreicNotation(position, code);
@@ -259,8 +259,8 @@ ChessMove::Pos ChessMove::CreatePosition(String word)
     case 'h':
         positionHorizontal = 8;
         break;
-    default:
-        LogWarning("Invalid horizontal position");
+    //default:
+    //    LogWarning("Invalid horizontal position");
     }
 
     if (positionVertical < 1 || positionVertical > 8)

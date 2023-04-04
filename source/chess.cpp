@@ -19,7 +19,8 @@ Chess::~Chess()
 void Chess::Init()
 {
     camera    = new Camera(glm::vec3(-9.683014, 16.498363, 7.318779), glm::vec3(0.0, 1.0, 0.0), 2, -41, 0);
-    pointer   = new Sprite("data/cursor_white.png");
+    pointer   = new Sprite("data/cubemap_yoko/negz.jpg");
+                //"data/cursor_white.png");
     fpsCamera = new FPSCamera(camera);
     fps       = new FPSCounter();
     bg        = new Background(
@@ -36,9 +37,9 @@ void Chess::Init()
 
     fpsCamera->UpdateCamera();
 
-    components.Add(camera);
     components.Add(pointer);
-    //components.Add(fpsCamera);
+    components.Add(camera);
+    components.Add(fpsCamera);
     components.Add(fps);
     components.Add(bg);
     components.Add(board);
@@ -469,8 +470,8 @@ Array<ChessMove> Chess::GetMoves()
                     case PAWN:
                         moves += GetPawnMoves(x, y, type);
                         break;
-                    default:
-                        LogWarning("Piece either unknown or black");
+                    //default:
+                    //    LogWarning("Piece either unknown or black");
                     }
                 }
                 else
@@ -495,8 +496,8 @@ Array<ChessMove> Chess::GetMoves()
                     case pawn:
                         moves += GetPawnMoves(x, y, type);
                         break;
-                    default:
-                        LogWarning("Piece either unknown or white");
+                    //default:
+                    //    LogWarning("Piece either unknown or white");
                     }
                 }
             }
@@ -647,8 +648,8 @@ void Chess::Update()
     }*/
 
     // Update mouse cursor graphics position
-    pointer->x = input.Mouse.x;
-    pointer->y = input.Mouse.y;
+    pointer->x = float(input.Mouse.x);
+    pointer->y = float(input.Mouse.y);
 
     // Update chess game moves
     if (playing)

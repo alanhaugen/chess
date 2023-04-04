@@ -390,8 +390,8 @@ void Board::Position(String fen)
                     success = true;
                 }
                 break;
-            default:
-                LogWarning("Piece code unknown");
+            //default:
+            //    LogWarning("Piece code unknown");
             }
         }
     }

@@ -19,8 +19,6 @@ Chess::~Chess()
 void Chess::Init()
 {
     camera    = new Camera(glm::vec3(-9.683014, 16.498363, 7.318779), glm::vec3(0.0, 1.0, 0.0), 2, -41, 0);
-    pointer   = new Sprite("data/cubemap_yoko/negz.jpg");
-                //"data/cursor_white.png");
     fpsCamera = new FPSCamera(camera);
     fps       = new FPSCounter();
     bg        = new Background(
@@ -34,6 +32,7 @@ void Chess::Init()
 
     light     = new PointLight(glm::vec3(-9.683014, 16.498363, 7.318779));
     board     = new Board();
+    pointer   = new Sprite("data/cursor.png", 6, 6);
 
     fpsCamera->UpdateCamera();
 

@@ -39,8 +39,4 @@ include $(SOLIDCORE)/Makefile.rules
 debug: bin/$(OUTPUT_DIR)/$(TARGET)$(EXE)
 release: bin/$(OUTPUT_DIR)/$(TARGET)$(EXE)
 
-ifneq ($(COMPILE_PLATFORM),webasm)
-bin/$(OUTPUT_DIR)/$(TARGET)$(EXE): nullaudio nullscript portaudioaudio stdfilesystem nullfilesystem nullphysics nullrenderer gles2renderer solid
-else
-bin/$(OUTPUT_DIR)/$(TARGET)$(EXE): nullaudio nullscript stdfilesystem nullfilesystem nullphysics nullrenderer gles2renderer solid
-endif
+bin/$(OUTPUT_DIR)/$(TARGET)$(EXE): $(DEPS)

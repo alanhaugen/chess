@@ -4,6 +4,7 @@ data
 # Build results
 build/
 bin/
+bin
 intermediate
 
 # Don't include generated documentation

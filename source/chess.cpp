@@ -14,6 +14,7 @@ Chess::~Chess()
     delete light;
     delete pointer;
     delete chess;
+    delete text;
 }
 
 void Chess::Init()
@@ -32,10 +33,12 @@ void Chess::Init()
 
     light     = new PointLight(glm::vec3(-9.683014, 16.498363, 7.318779));
     board     = new Board();
-    pointer   = new Sprite("data/cursor.png", 50, 30);
+    pointer   = new Sprite("data/cursor.png", 0, 0, 50, 30);
+    text      = new Text("Test string");
 
     fpsCamera->UpdateCamera();
 
+    components.Add(text);
     components.Add(pointer);
     components.Add(camera);
     components.Add(fpsCamera);

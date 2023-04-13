@@ -42,3 +42,7 @@ For Windows, please add /c/Program\ Files/Git/usr/bin to your PATH and use mingw
 For this build step, regardless of platform, change the build working directory to the following:
 
 > %{sourceDir}
+
+Also, to Run set the following for working directory (QtCreator does not seem to expand variables here for some reason):
+
+> /Users/username/chess/intermediate

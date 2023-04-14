@@ -2,7 +2,7 @@
 #define CHESS_H
 
 #include <core/application.h>
-#include <core/components/cell.h>
+#include <core/components/grid.h>
 #include <core/components/text.h>
 #include <core/components/sprite.h>
 #include <core/components/camera.h>
@@ -27,7 +27,7 @@ private:
     Background *bg;
     PointLight *light;
 
-    Cell *chess;
+    Grid *chess;
 
     bool dragging;
     Actor *activePiece;

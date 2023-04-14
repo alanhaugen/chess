@@ -34,7 +34,7 @@ void Chess::Init()
     light     = new PointLight(glm::vec3(-9.683014, 16.498363, 7.318779));
     board     = new Board();
     pointer   = new Sprite("data/cursor.png");
-    text      = new Text("Test string", 100, 100, 60.0f, 60.0f);
+    text      = new Text("Test string", 100, 100, 6.0f, 6.0f);
 
     fpsCamera->UpdateCamera();
 
@@ -59,7 +59,7 @@ void Chess::Init()
     playing = true;
     fenPosition = 0;
 
-    chess = new Cell(8, 8);
+    chess = new Grid(8, 8);
 
     chess->At(0, 0) = ROOK;
     chess->At(1, 0) = KNIGHT;
@@ -105,7 +105,7 @@ void Chess::Move(ChessMove move)
     unsigned int type1 = chess->At(move.position.startPos.x, move.position.startPos.y);
     unsigned int type2 = chess->At(move.position.endPos.x, move.position.endPos.y);
 
-    chess->At(move.position.startPos.x, move.position.startPos.y) = Cell::EMPTY;
+    chess->At(move.position.startPos.x, move.position.startPos.y) = Grid::EMPTY;
     chess->At(move.position.endPos.x, move.position.endPos.y) = type1;
 
     if (check)
@@ -143,7 +143,7 @@ void Chess::Move(ChessMove move)
 bool Chess::CheckMove(ChessMove &move)
 {
     // Moving to an empty space is always legal
-    if (chess->At(move.position.endPos.x, move.position.endPos.y) == Cell::EMPTY)
+    if (chess->At(move.position.endPos.x, move.position.endPos.y) == Grid::EMPTY)
     {
         return true;
     }
@@ -527,7 +527,7 @@ String Chess::FEN()
         {
             unsigned int piece = chess->At(i, j);
 
-            if (piece != Cell::EMPTY)
+            if (piece != Grid::EMPTY)
             {
                 ChessMove move(i, j, piece);
                 String code = move.algebraicNotation;

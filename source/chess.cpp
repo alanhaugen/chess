@@ -34,7 +34,7 @@ void Chess::Init()
     light     = new PointLight(glm::vec3(-9.683014, 16.498363, 7.318779));
     board     = new Board();
     pointer   = new Sprite("data/cursor.png");
-    text      = new Text("Test string", 100, 100, 6.0f, 6.0f);
+    text      = new Text("Test string", 100, 100, 1.0f, 1.0f);
 
     fpsCamera->UpdateCamera();
 
@@ -582,7 +582,7 @@ void Chess::MakeRandomMove()
     board->Position(FEN());
 }
 
-bool Chess::MakeFirstCapture()
+bool Chess::MakeCapture()
 {
     // Chess gives us all the possible moves in an array
     // [ move1, move2, move3 ... ]
@@ -650,15 +650,15 @@ void Chess::Update()
     }*/
 
     // Update mouse cursor graphics position
-    pointer->x = float(input.Mouse.x);
-    pointer->y = float(input.Mouse.y);
+    pointer->x = float(input.Mouse.x - pointer->halfWidth);
+    pointer->y = float(input.Mouse.y - pointer->halfHeight);
 
     // Update chess game moves
     if (playing)
     {
         fens.Add(FEN());
 
-        if (MakeFirstCapture() == false)
+        if (MakeCapture() == false)
         {
             MakeRandomMove();
         }

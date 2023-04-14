@@ -44,7 +44,7 @@ private:
 
     void Move(ChessMove);
     void MakeRandomMove();
-    bool MakeFirstCapture();
+    bool MakeCapture();
     Array<ChessMove> GetMoves();
     String FEN();
 

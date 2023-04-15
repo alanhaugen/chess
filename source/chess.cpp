@@ -33,7 +33,7 @@ void Chess::Init()
 
     light     = new PointLight(glm::vec3(-9.683014, 16.498363, 7.318779));
     board     = new Board();
-    text      = new Text("Test string", 100, 100, 5.0f, 5.0f);
+    text      = new Text("TEST STRING", 100, 100, 3.0f, 3.0f);
     pointer   = new Sprite("data/cursor.png", 0, 0, 0.5, 0.5);
 
     fpsCamera->UpdateCamera();

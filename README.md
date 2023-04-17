@@ -13,6 +13,8 @@ http://www.humus.name
 
 Symbolically link the following directories from Huldra Dropbox
 
+You can download then files from here: https://www.dropbox.com/sh/m1htbiaohsktne3/AABzwem4IiLl4gSQug-7biNCa?dl=0
+
 For Unix:
 
 > ln -s ~/Huldra\ Dropbox/Chess/data data

@@ -265,7 +265,7 @@ ChessMove::Pos ChessMove::CreatePosition(String word)
 
     if (positionVertical < 1 || positionVertical > 8)
     {
-        LogWarning("Invalid vertical position");
+        //LogWarning("Invalid vertical position");
     }
 
     Pos position;

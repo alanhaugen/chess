@@ -29,6 +29,8 @@ private:
 
     Grid *chess;
 
+    Array<Actor*> boardTileCollisionBoxes;
+
     bool dragging;
     Actor *activePiece;
     ITime *timer;

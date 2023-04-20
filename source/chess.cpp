@@ -97,7 +97,29 @@ void Chess::Init()
     chess->At(6, 6) = pawn;
     chess->At(7, 6) = pawn;
 
+    // Update board state based on chess grid
     board->Position(FEN());
+
+    // Adding tiles to scene to do *collision against
+    boardTileCollisionBoxes.Resize(8*8);
+    float tileSize = 64.0f;
+    float x = 0.0f;
+    float y = 0.0f;
+
+    for (unsigned int i = 0; i < 8 * 8; i++)
+    {
+        boardTileCollisionBoxes[i] = new Actor();
+        boardTileCollisionBoxes[i]->matrix.Translate(glm::vec3(x * tileSize, y * tileSize, 0));
+        components.Add(boardTileCollisionBoxes[i]);
+
+        x++;
+
+        if (i % 8 == 0)
+        {
+            y++;
+            x = 0;
+        }
+    }
 }
 
 void Chess::Move(ChessMove move)

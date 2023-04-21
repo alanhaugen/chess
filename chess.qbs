@@ -41,7 +41,6 @@ solid {
             "data/icon_512x512.png",
             "data/icon_64x64.png",
             "data/icon_96x96.png",
-            "data/level1.json",
             "data/logo_inv_jpg.jpg",
             "data/phong.frag",
             "data/phong.vert",
@@ -83,6 +82,17 @@ solid {
 
             cpp.libraryPaths: [project.buildDirectory, "../solid/lib/debug/darwin/x86_64"]
             cpp.includePaths: includePaths.concat("../solid/include/darwin")
+            cpp.defines: project.defines.concat(project.sdlDefines)
+        }
+
+        Properties {
+            condition: qbs.targetOS.contains("linux")
+
+            //cpp.dynamicLibraries: linuxSharedLibs
+            cpp.staticLibraries: staticLibs.concat("SDL2")
+
+            cpp.libraryPaths: [project.buildDirectory, "../solid/lib/debug/linux/x86_64"]
+            cpp.includePaths: includePaths.concat("../solid/include/linux")
             cpp.defines: project.defines.concat(project.sdlDefines)
         }
 

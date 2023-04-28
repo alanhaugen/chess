@@ -736,7 +736,7 @@ void Chess::Update()
 
     for (unsigned int i = 0; i < board->components.Size(); i++)
     {
-        Actor *piece = dynamic_cast<Actor*>(board->components[i]);
+        Actor *piece = dynamic_cast<Actor*>(*board->components[i]);
         if (piece->tag.Empty() == false) // board itself has tag ""
         {
             piece->Uniform("u_lightPosition", static_cast<glm::vec3>(light->position));
@@ -748,7 +748,7 @@ void Chess::Update()
     {
         for (unsigned int i = 0; i < board->components.Size(); i++)
         {
-            Actor *piece = dynamic_cast<Actor*>(board->components[i]);
+            Actor *piece = dynamic_cast<Actor*>(*board->components[i]);
             //Log(piece->tag);
 
             if (piece->tag.Empty() == false) // board itself has tag ""

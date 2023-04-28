@@ -283,7 +283,7 @@ void Board::Position(String fen)
 
     for (unsigned int j = 0; j < components.Size(); j++)
     {
-        Actor *piece = dynamic_cast<Actor*>(components[j]);
+        Actor *piece = dynamic_cast<Actor*>(*components[j]);
 
         if (piece->tag.Empty() == false)
         {
@@ -302,7 +302,7 @@ void Board::Position(String fen)
 
         for (unsigned int j = 0; j < components.Size() && success == false; j++)
         {
-            Actor *piece = dynamic_cast<Actor*>(components[j]);
+            Actor *piece = dynamic_cast<Actor*>(*components[j]);
 
             switch (type)
             {

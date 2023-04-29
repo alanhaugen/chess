@@ -206,23 +206,6 @@ Board::Board()
 
 Board::~Board()
 {
-    delete board;
-    delete king;
-    delete pawn1;
-    delete pawn2;
-    delete pawn3;
-    delete pawn4;
-    delete pawn5;
-    delete pawn6;
-    delete pawn7;
-    delete pawn8;
-    delete bishop1;
-    delete bishop2;
-    delete knight1;
-    delete knight2;
-    delete rook1;
-    delete rook2;
-    delete queen;
 }
 
 void MovePiece(Actor *piece, String word)

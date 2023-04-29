@@ -6,15 +6,6 @@ Chess::Chess()
 
 Chess::~Chess()
 {
-    delete board;
-    delete fpsCamera;
-    delete fps;
-    delete camera;
-    delete bg;
-    delete light;
-    delete pointer;
-    delete chess;
-    delete text;
 }
 
 void Chess::Init()

@@ -753,7 +753,7 @@ void Chess::Update()
 
             if (piece->tag.Empty() == false) // board itself has tag ""
             {
-                IPhysics::Ray cameraRay = camera->ScreenPointToRay(input.Mouse.x, input.Mouse.y);
+                Physics::IPhysics::Ray cameraRay = camera->ScreenPointToRay(input.Mouse.x, input.Mouse.y);
 
                 if (physics->Intersect(cameraRay, piece->hitbox))
                 {

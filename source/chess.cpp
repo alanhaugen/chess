@@ -746,13 +746,13 @@ void Chess::Update()
             {
                 Physics::IPhysics::Ray cameraRay = camera->ScreenPointToRay(input.Mouse.x, input.Mouse.y);
 
-                if (physics->Intersect(cameraRay, piece->hitbox))
+                /*if (physics->Intersect(cameraRay, piece->hitbox))
                 {
                     activePiece = piece;
                     activePiece->Uniform("colour", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
                     dragging = true;
                     break;
-                }
+                }*/
             }
         }
     }

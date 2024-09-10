@@ -663,8 +663,8 @@ void Chess::Update()
     }*/
 
     // Update mouse cursor graphics position
-    pointer->x = float(input.Mouse.x - pointer->halfWidth);
-    pointer->y = float(input.Mouse.y - pointer->halfHeight);
+    *pointer->matrix.x = float(input.Mouse.x - pointer->halfWidth);
+    *pointer->matrix.y = float(input.Mouse.y - pointer->halfHeight);
 
     // Update chess game moves
     if (playing)

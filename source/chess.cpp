@@ -13,6 +13,7 @@ void Chess::Init()
     camera    = new Camera(glm::vec3(-9.683014, 16.498363, 7.318779), glm::vec3(0.0, 1.0, 0.0), 2, -41, 0);
     fpsCamera = new FPSCamera(camera);
     fps       = new FPSCounter();
+    board     = new Board();
     bg        = new Background(
                 "data/cubemap_yoko/negz.jpg",
                 "data/cubemap_yoko/posz.jpg",
@@ -23,7 +24,6 @@ void Chess::Init()
                 camera);
 
     light     = new PointLight(glm::vec3(-9.683014, 16.498363, 7.318779));
-    board     = new Board();
     text      = new Text("CHESS GAME", 100, 100, 3.0f, 3.0f);
     pointer   = new Sprite("data/cursor.png", 0, 0, 0.5, 0.5);
 
@@ -32,7 +32,7 @@ void Chess::Init()
     components.Add(text);
     components.Add(pointer);
     components.Add(camera);
-    components.Add(fpsCamera);
+    //components.Add(fpsCamera);
     components.Add(fps);
     components.Add(bg);
     components.Add(board);
@@ -746,13 +746,13 @@ void Chess::Update()
             {
                 Physics::IPhysics::Ray cameraRay = camera->ScreenPointToRay(input.Mouse.x, input.Mouse.y);
 
-                /*if (physics->Intersect(cameraRay, piece->hitbox))
+                if (physics->Intersect(cameraRay, piece->collisionBox))
                 {
                     activePiece = piece;
                     activePiece->Uniform("colour", glm::vec4(0.0f, 0.0f, 1.0f, 1.0f));
                     dragging = true;
                     break;
-                }*/
+                }
             }
         }
     }

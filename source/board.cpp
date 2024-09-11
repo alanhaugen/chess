@@ -9,8 +9,8 @@ Board::Board()
                           "data/simple.frag"));
     board->matrix.Translate(glm::vec3(.5, 0, -3));
 
-    String vert = "data/simple.vert";
-    String frag = "data/simple.frag";
+    String vert = "data/phong.vert";
+    String frag = "data/phong.frag";
 
     king = new Actor();
     king->matrix.Translate(glm::vec3(3 * 4, 0, -3));
@@ -87,7 +87,7 @@ Board::Board()
     queen->matrix.Translate(glm::vec3(3 * 3, 0, -3));
     queen->Uniform("colour", glm::vec4(0.4, 0.7, 0.4, 1.0));
 
-    //components.Add(board);
+    components.Add(board);
     components.Add(king);
     components.Add(pawn1);
     components.Add(pawn2);

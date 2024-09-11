@@ -32,7 +32,7 @@ void Chess::Init()
     components.Add(text);
     components.Add(pointer);
     components.Add(camera);
-    //components.Add(fpsCamera);
+    components.Add(fpsCamera);
     components.Add(fps);
     components.Add(bg);
     components.Add(board);

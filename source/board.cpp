@@ -5,8 +5,8 @@ Board::Board()
 {
     board = new Actor();
     board->Add(new Mesh("data/blender/board.blend",
-                          "data/simple.vert",
-                          "data/simple.frag"));
+                        "data/simple.vert",
+                        "data/simple.frag"));
     board->matrix.Translate(glm::vec3(.5, 0, -3));
 
     String vert = "data/phong.vert";

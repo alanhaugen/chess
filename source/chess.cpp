@@ -24,16 +24,23 @@ void Chess::Init()
                 camera);
 
     light     = new PointLight(glm::vec3(-9.683014, 16.498363, 7.318779));
-    text      = new Text("CHESS GAME", 100, 100, 3.0f, 3.0f);
+    text      = new Text("CHESS", 300, 40, 2.0f, 2.0f);
     pointer   = new Sprite("data/cursor.png", 0, 0, 0.5, 0.5);
 
     fpsCamera->UpdateCamera();
 
     components.Add(text);
-    components.Add(pointer);
+    components.Add(new Text("Phong Shading", 0, 250));
+    components.Add(new Text("Model loading", 0, 300));
+    components.Add(new Text("AI vs AI",0, 350));
+    components.Add(new Text("Cube Map Background",0, 400));
+    components.Add(new Text("Camera FPS controls",0, 450));
+    components.Add(new Text("Text rendering",0, 500));
+    //components.Add(new Text("Screen-to-world object picking",0, 550));
+    //components.Add(pointer);
     components.Add(camera);
     components.Add(fpsCamera);
-    components.Add(fps);
+    //components.Add(fps);
     components.Add(bg);
     components.Add(board);
     components.Add(light);
@@ -621,7 +628,7 @@ bool Chess::MakeCapture()
     return false;
 }
 
-void Chess::Update()
+void Chess::Update(float dt)
 {
 #ifdef TILTFIVE
     if (input.Head.active)
@@ -662,13 +669,17 @@ void Chess::Update()
         timer->Reset();
     }*/
 
+    //board->matrix.Rotate(0.001f, glm::vec3(0.0f,1.0f,0.0f));//(10, glm::vec3(1.0f, 1.0f, 1.0f));
+
     // Update mouse cursor graphics position
     *pointer->matrix.x = float(input.Mouse.x - pointer->halfWidth);
     *pointer->matrix.y = float(input.Mouse.y - pointer->halfHeight);
 
     // Update chess game moves
-    if (playing)
+    if (playing && timer->TimeSinceStarted() > 1000.0f)
     {
+        timer->Reset();
+
         fens.Add(FEN());
 
         if (MakeCapture() == false)
@@ -676,7 +687,7 @@ void Chess::Update()
             MakeRandomMove();
         }
     }
-    else
+    else if (playing == false)
     {
         if (input.Pressed(input.Key.LEFT))
         {

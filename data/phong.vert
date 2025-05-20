@@ -18,8 +18,8 @@ layout(location = 2) in vec3 i_normal;	        // per-vertex normals
 layout(location = 3) in vec2 i_texcoord0;	// per-vertex texcoord
 
 // matrices
-uniform mat4 u_modelMat;
-uniform mat3 u_normalMat;
+const mat4 u_modelMat = mat4(1.0f);
+const mat3 u_normalMat = mat3(1.0f);
 
 // position of light and camera
 uniform vec3 u_lightPosition;

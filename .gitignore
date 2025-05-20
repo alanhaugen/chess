@@ -1,5 +1,7 @@
 # Data folder
 #data
+*.dll
+*.exe
  
 # Build results
 build/

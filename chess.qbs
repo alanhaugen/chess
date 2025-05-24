@@ -2,6 +2,7 @@ import "../solid/solid.qbs" as solid
 
 solid {
     Application {
+//        cpp.cxxLanguageVersion: "c++23"
         name: "App"
 
         files: [
@@ -45,12 +46,22 @@ solid {
         Properties {
             condition: qbs.targetOS.contains("macos")
 
-            cpp.frameworks: macosFrameworks
+            cpp.frameworks: {
+                /*if (qbs.architecture.includes("arm64"))
+                    return macosFrameworks.concat(
+                           "CoreHaptics",
+                           "MediaPlayer",
+                           "GameController",
+                           "QuartzCore",
+                           "IOSurface")*/
+                return macosFrameworks
+            }
 
             cpp.dynamicLibraries: macosSharedLibs
-            cpp.staticLibraries: staticLibs.concat("SDL2")
 
-            cpp.libraryPaths: [project.buildDirectory, "../solid/lib/debug/darwin/x86_64"]
+            cpp.staticLibraries: staticLibs.concat("SDL2", "MoltenVK")
+
+            cpp.libraryPaths: [project.buildDirectory, "../solid/lib/debug/darwin/" + qbs.architecture]
             cpp.includePaths: includePaths.concat("../solid/include/darwin")
             cpp.defines: project.defines.concat(project.sdlDefines)
         }
@@ -61,7 +72,7 @@ solid {
             //cpp.dynamicLibraries: linuxSharedLibs
             cpp.staticLibraries: staticLibs.concat("SDL2")
 
-            cpp.libraryPaths: [project.buildDirectory, "../solid/lib/debug/linux/x86_64"]
+            cpp.libraryPaths: [project.buildDirectory, "../solid/lib/debug/linux/" + qbs.architecture]
             cpp.includePaths: includePaths.concat("../solid/include/linux")
             cpp.defines: project.defines.concat(project.sdlDefines)
         }

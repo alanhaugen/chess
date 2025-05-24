@@ -279,7 +279,7 @@ void Board::Position(String fen)
     {
         String word = words[i];
 
-        int type = word[0];
+        int type = word.At(0);
 
         bool success = false;
 
